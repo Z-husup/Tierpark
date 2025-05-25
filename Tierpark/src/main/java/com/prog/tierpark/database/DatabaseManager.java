@@ -8,8 +8,8 @@ public class DatabaseManager {
 
     public static Connection getConnection() throws SQLException {
 
-        String url = "jdbc:sqlserver://localhost\\SQLEXPRESS;databaseName=Tierpark;integratedSecurity=true;encrypt=true;trustServerCertificate=true";
-        
+        String url = "{DB_URL}";
+
         Connection conn = DriverManager.getConnection(url);
 
         return conn;
