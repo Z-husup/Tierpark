@@ -7,13 +7,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.prog.tierpark.database.DatabaseManager.initializeDatabase;
-
 public class TierparkApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-
-        initializeDatabase();
 
         FXMLLoader fxmlLoader = new FXMLLoader(TierparkApplication.class.getResource("start-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);

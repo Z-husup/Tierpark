@@ -15,7 +15,5 @@ public class Animal {
     private int size;
     private int weight;
     private AnimalStatus status;
-
-    // Getters, setters, toString
 }
 
