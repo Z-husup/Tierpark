@@ -1,9 +1,11 @@
 package com.prog.tierpark.model;
 
 import com.prog.tierpark.model.enums.AnimalGender;
+import lombok.Data;
 
 import java.time.LocalDate;
 
+@Data
 public class Animal {
     private Long id;
     private String name;

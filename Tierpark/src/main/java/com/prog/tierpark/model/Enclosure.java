@@ -1,9 +1,11 @@
 package com.prog.tierpark.model;
 
 import javafx.concurrent.Worker;
+import lombok.Data;
 
 import java.util.List;
 
+@Data
 public class Enclosure {
     private Long id;
     private String name;

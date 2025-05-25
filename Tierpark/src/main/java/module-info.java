@@ -9,6 +9,7 @@ module com.prog.tierpark {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires static lombok;
 
     opens com.prog.tierpark to javafx.fxml;
     exports com.prog.tierpark;
