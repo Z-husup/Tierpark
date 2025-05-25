@@ -1,5 +1,7 @@
 package com.prog.tierpark.model;
 
+import com.prog.tierpark.model.enums.AnimalGender;
+
 import java.time.LocalDate;
 
 public class Animal {

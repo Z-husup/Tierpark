@@ -1,5 +1,8 @@
 package com.prog.tierpark.model;
 
+import com.prog.tierpark.model.enums.WorkerSpecialization;
+import com.prog.tierpark.model.enums.WorkerStatus;
+
 import java.time.LocalDate;
 
 public class Worker {

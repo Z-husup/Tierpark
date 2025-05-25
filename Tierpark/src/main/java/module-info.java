@@ -14,4 +14,6 @@ module com.prog.tierpark {
     exports com.prog.tierpark;
     exports com.prog.tierpark.controller;
     opens com.prog.tierpark.controller to javafx.fxml;
+    exports com.prog.tierpark.model;
+    opens com.prog.tierpark.model to javafx.fxml;
 }
