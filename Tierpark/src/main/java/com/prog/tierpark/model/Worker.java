@@ -17,7 +17,7 @@ public class Worker {
     private int age;
     private String gender;
     private LocalDate hireDate;
-    private Schedule schedule;
+    private Enclosure enclosure;
     private WorkerStatus status;
     private int salary;
     private WorkerSpecialization specialization;

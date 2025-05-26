@@ -10,6 +10,7 @@ module com.prog.tierpark {
     requires eu.hansolo.tilesfx;
     requires java.sql;
     requires static lombok;
+    requires atlantafx.base;
 
     opens com.prog.tierpark to javafx.fxml;
     exports com.prog.tierpark;
