@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.BottomNavigation?>
-<?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
-<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -14,49 +11,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.NewWorkerController">
    <children>
-      <BottomNavigation layoutX="6.0" layoutY="2.0" prefHeight="25.0" prefWidth="590.0">
-         <actionItems>
-            <BottomNavigationButton defaultButton="true" selected="true" text="Admin - Page">
-               <graphic>
-                  <Icon content="RECENT_ACTORS" />
-               </graphic>
-            </BottomNavigationButton>
-            <BottomNavigationButton cancelButton="true" text="Back">
-               <graphic>
-                  <Icon content="NEAR_ME" />
-               </graphic>
-            </BottomNavigationButton>
-         </actionItems>
-      </BottomNavigation>
-      <Button layoutX="470.0" layoutY="425.0" mnemonicParsing="false" text="add new worker" />
-      <TextField layoutX="68.0" layoutY="320.0" promptText="username" />
-      <TextField layoutX="68.0" layoutY="360.0" promptText="password" />
+      <Button layoutX="470.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleAddNewWorker" text="add new worker" />
+      <TextField fx:id="usernameField" layoutX="68.0" layoutY="320.0" promptText="username" />
+      <TextField fx:id="passwordField" layoutX="68.0" layoutY="360.0" promptText="password" />
       <Text layoutX="68.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LogIn details:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Line endX="14.0" endY="-49.0" layoutX="287.0" layoutY="76.0" startX="13.0" startY="396.0" />
-      <TextField layoutX="324.0" layoutY="91.0" prefHeight="25.0" prefWidth="247.0" promptText="full-name" />
-      <TextField layoutX="324.0" layoutY="119.0" prefHeight="25.0" prefWidth="247.0" promptText="email" />
+      <Line endX="12.999969482421875" endY="-76.0" layoutX="287.0" layoutY="76.0" startX="13.0" startY="396.0" />
+      <TextField fx:id="fullNameField" layoutX="324.0" layoutY="91.0" prefHeight="25.0" prefWidth="247.0" promptText="full-name" />
+      <TextField fx:id="emailField" layoutX="324.0" layoutY="119.0" prefHeight="25.0" prefWidth="247.0" promptText="email" />
       <Text layoutX="324.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Worker details:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="324.0" layoutY="146.0" prefHeight="25.0" prefWidth="247.0" promptText="phone number" />
-      <DatePicker layoutX="324.0" layoutY="182.0" prefHeight="25.0" prefWidth="247.0" promptText="date of birth" />
-      <TextField layoutX="324.0" layoutY="214.0" prefHeight="25.0" prefWidth="247.0" promptText="gender" />
-      <ComboBox layoutX="403.0" layoutY="259.0" prefHeight="32.0" prefWidth="168.0" promptText="Enclosure #" />
+      <TextField fx:id="numberField" layoutX="324.0" layoutY="146.0" prefHeight="25.0" prefWidth="247.0" promptText="phone number" />
+      <DatePicker fx:id="dateOfBirthField" layoutX="324.0" layoutY="182.0" prefHeight="25.0" prefWidth="247.0" promptText="date of birth" />
+      <TextField fx:id="genderField" layoutX="324.0" layoutY="214.0" prefHeight="25.0" prefWidth="247.0" promptText="gender" />
+      <ComboBox fx:id="enclosureCombo" layoutX="403.0" layoutY="259.0" prefHeight="32.0" prefWidth="168.0" promptText="Enclosure #" />
       <Text layoutX="324.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assign to Enclosure:" wrappingWidth="77.6328125" />
-      <ComboBox layoutX="403.0" layoutY="303.0" prefHeight="32.0" prefWidth="168.0" promptText="WORKING" />
+      <ComboBox fx:id="statusCombo" layoutX="403.0" layoutY="303.0" prefHeight="32.0" prefWidth="168.0" promptText="WORKING" />
       <Text layoutX="324.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current status:" wrappingWidth="59.6328125" />
-      <TextField layoutX="324.0" layoutY="351.0" prefHeight="25.0" prefWidth="247.0" promptText="salary" />
+      <TextField fx:id="salaryField" layoutX="324.0" layoutY="351.0" prefHeight="25.0" prefWidth="247.0" promptText="salary" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="76.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@worker-logo.jpg" />
+            <Image url="@images/worker-logo.jpg" />
          </image>
       </ImageView>
    </children>

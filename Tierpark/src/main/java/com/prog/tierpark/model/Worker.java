@@ -9,15 +9,20 @@ import java.time.LocalDate;
 @Data
 public class Worker {
     private Long id;
+
+    private String username;
+    private String password;
+
     private String fullName;
     private String email;
     private String phoneNumber;
     private LocalDate dateOfBirth;
     private String gender;
     private LocalDate hireDate;
-    private Enclosure enclosure;
     private WorkerStatus status;
     private int salary;
     private WorkerSpecialization specialization;
+
+    private Enclosure enclosure;
 }
 
