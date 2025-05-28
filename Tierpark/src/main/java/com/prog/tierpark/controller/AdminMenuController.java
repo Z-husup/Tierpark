@@ -13,31 +13,31 @@ public class AdminMenuController {
 
     @FXML
     public void initialize() {
-        // Optional: add logic to initialize the list views
+        // TODO: Optional: add logic to initialize the list views
     }
 
     @FXML
     private void handleAddNewWorker() {
         System.out.println("Add new worker button clicked");
-        // Add your logic here
+        // TODO: Add your logic here
     }
 
     @FXML
     private void handleAddNewEnclosure() {
         System.out.println("Add new enclosure button clicked");
-        // Add your logic here
+        // TODO: Add your logic here
     }
 
     @FXML
     private void handleDeleteEnclosure() {
         System.out.println("Delete enclosure button clicked");
-        // Add your logic here
+        // TODO: Add your logic here
     }
 
     @FXML
     private void handleDeleteWorker() {
         System.out.println("Delete worker button clicked");
-        // Add your logic here
+        // TODO: Add your logic here
     }
 
 }

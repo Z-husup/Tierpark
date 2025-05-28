@@ -33,6 +33,7 @@ public class Application extends javafx.application.Application {
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.initStyle(StageStyle.DECORATED);
+
         stage.show();
     }
 

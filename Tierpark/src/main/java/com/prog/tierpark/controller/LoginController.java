@@ -1,5 +1,6 @@
 package com.prog.tierpark.controller;
 
+import com.prog.tierpark.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -21,7 +22,7 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-        // Optional: Initialize roles like admin/worker in ComboBox
+        // TODO: Optional: Initialize roles like admin/worker in ComboBox
         roleComboBox.getItems().addAll("ADMIN", "WORKER");
     }
 
@@ -33,6 +34,13 @@ public class LoginController {
         String role = roleComboBox.getValue();
 
         // TODO: Add actual authentication logic
-        System.out.printf("Attempt login: %s / %s as %s%n", username, password, role);
+        if (role.equals("ADMIN")) {
+            Application.switchScene("admin-menu-view.fxml");
+        }
+        if (role.equals("WORKER")) {
+            Application.switchScene("worker-menu-view.fxml");
+        }
+        else System.out.printf("Attempt login: %s / %s as %s%n", username, password, role);
+
     }
 }

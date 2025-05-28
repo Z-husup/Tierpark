@@ -41,7 +41,7 @@ public class WorkerMenuController {
 
     @FXML
     public void initialize() {
-        // Optional: populate schedule list or set worker info
+        // TODO: Optional: populate schedule list or set worker info
     }
 
     @FXML

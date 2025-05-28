@@ -39,24 +39,24 @@ public class EnclosureListController {
 
     @FXML
     public void initialize() {
-        // Optional: populate enclosureListView or initialize labels
+        // TODO: Optional: populate enclosureListView or initialize labels
     }
 
     @FXML
     private void toMainMenu() {
         System.out.println("Navigating to Main Menu");
-        // Navigation logic here
+        // TODO: Navigation logic here
     }
 
     @FXML
     private void goBack() {
         System.out.println("Going back to previous page");
-        // Go-back logic here
+        // TODO: Go-back logic here
     }
 
     @FXML
     private void toEnclosureManagePage() {
         System.out.println("Navigating to Enclosure Manage Page");
-        // Logic to switch scene or open management details
+        // TODO: Logic to switch scene or open management details
     }
 }

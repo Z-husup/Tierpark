@@ -46,19 +46,19 @@ public class EditWorkerController {
 
     @FXML
     public void initialize() {
-        // Optional: setup ComboBox items or disable fields
+        // TODO: Optional: setup ComboBox items or disable fields
     }
 
     @FXML
     private void handleEditingMode() {
         System.out.println("Editing mode toggled");
-        // Add logic to enable editing of text fields and combo boxes
+        // TODO: Add logic to enable editing of text fields and combo boxes
     }
 
     @FXML
     private void handeChangeDetails() {
         System.out.println("Change details submitted");
-        // Add logic to save updated details
+        // TODO: Add logic to save updated details
     }
 
 }

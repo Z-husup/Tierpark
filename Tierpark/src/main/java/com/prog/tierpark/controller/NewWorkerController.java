@@ -43,7 +43,7 @@ public class NewWorkerController {
 
     @FXML
     public void initialize() {
-        // Optional: Populate combo boxes, set default values, etc.
+        // TODO: Optional: Populate combo boxes, set default values, etc.
         statusCombo.getItems().addAll("WORKING", "VACATION", "RETIRED");
     }
 
