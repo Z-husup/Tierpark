@@ -39,12 +39,6 @@ public class EditWorkerController {
     private TextField salaryField;
 
     @FXML
-    private Button handleEditingMode;
-
-    @FXML
-    private Button handeChangeDetails;
-
-    @FXML
     public void initialize() {
         // TODO: Optional: setup ComboBox items or disable fields
     }

@@ -18,12 +18,10 @@ public class LoginController {
     private ComboBox<String> roleComboBox;
 
     @FXML
-    private Button handleLogin;
-
-    @FXML
     public void initialize() {
-        // TODO: Optional: Initialize roles like admin/worker in ComboBox
+
         roleComboBox.getItems().addAll("ADMIN", "WORKER");
+
     }
 
     @FXML

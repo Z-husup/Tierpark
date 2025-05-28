@@ -8,7 +8,9 @@ import java.util.List;
 @Data
 public class Enclosure {
     private Long id;
+
     private String name;
+
     private String zone;
     private String status;
     private String type;

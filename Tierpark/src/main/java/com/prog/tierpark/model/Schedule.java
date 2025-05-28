@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 @Data
 public class Schedule {
     private Long id;
+
     private String name;
+
     private ScheduleType scheduleType;
     private LocalDateTime startingTime;
 }

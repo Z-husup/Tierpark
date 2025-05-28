@@ -7,7 +7,9 @@ import java.time.LocalDate;
 @Data
 public class AnimalFood {
     private Long id;
+
     private String name;
+
     private int weight;
     private LocalDate deliveryDate;
     private LocalDate expirationDate;

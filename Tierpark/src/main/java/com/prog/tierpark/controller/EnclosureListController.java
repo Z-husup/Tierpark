@@ -29,15 +29,6 @@ public class EnclosureListController {
     private Text enclosureConditionLabel;
 
     @FXML
-    private Button toMainMenu;
-
-    @FXML
-    private Button goBack;
-
-    @FXML
-    private Button toEnclosureManagePage;
-
-    @FXML
     public void initialize() {
         // TODO: Optional: populate enclosureListView or initialize labels
     }

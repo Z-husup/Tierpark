@@ -8,7 +8,9 @@ import java.time.LocalDate;
 @Data
 public class Animal {
     private Long id;
+
     private String name;
+
     private Species species;
     private LocalDate dateOfBirth;
     private LocalDate arrivalDate;

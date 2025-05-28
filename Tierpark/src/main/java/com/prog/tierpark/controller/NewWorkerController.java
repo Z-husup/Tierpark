@@ -39,12 +39,10 @@ public class NewWorkerController {
     private TextField salaryField;
 
     @FXML
-    private Button handleAddNewWorker;
-
-    @FXML
     public void initialize() {
-        // TODO: Optional: Populate combo boxes, set default values, etc.
+
         statusCombo.getItems().addAll("WORKING", "VACATION", "RETIRED");
+
     }
 
     @FXML
@@ -63,6 +61,5 @@ public class NewWorkerController {
         String salary = salaryField.getText();
 
         // TODO: Add validation and persist logic
-        System.out.printf("Worker: %s (%s), Status: %s, Salary: %s\n", fullName, username, status, salary);
     }
 }

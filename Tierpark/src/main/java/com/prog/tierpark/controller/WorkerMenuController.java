@@ -31,15 +31,6 @@ public class WorkerMenuController {
     private Text workerSalaryLabel;
 
     @FXML
-    private Button toEnclosureListPage;
-
-    @FXML
-    private Button toFoodManagementPage;
-
-    @FXML
-    private Button toEnclosureManagementPage;
-
-    @FXML
     public void initialize() {
         // TODO: Optional: populate schedule list or set worker info
     }
