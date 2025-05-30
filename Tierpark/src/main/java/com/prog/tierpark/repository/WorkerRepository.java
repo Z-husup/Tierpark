@@ -135,4 +135,89 @@ public class WorkerRepository {
                 enclosure
         );
     }
+
+
+    /**
+     * Retrieves a worker by their username from the database, including associated enclosure information.
+     *
+     * @param username the username of the worker to retrieve
+     * @return a {@link Worker} object if found, or {@code null} if no such worker exists
+     */
+    public Worker getWorkerByUsername(String username) {
+        String sql = """
+        SELECT worker.*, 
+               enclosure.id AS enclosure_id, enclosure.name AS enclosure_name, enclosure.zone, 
+               enclosure.status AS enclosure_status, enclosure.type,
+               enclosure.capacity, enclosure.description, enclosure.condition, enclosure.area
+        FROM worker
+        LEFT JOIN enclosure ON worker.enclosure = enclosure.id
+        WHERE worker.username = ?
+        """;
+
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return extractWorkerWithEnclosure(rs);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    /**
+     * Adds a new worker to the database and assigns the generated ID to the worker object.
+     *
+     * @param worker the {@link Worker} object to be added
+     * @return {@code true} if the insertion was successful, otherwise {@code false}
+     */
+    public boolean addWorker(Worker worker) {
+        String sql = """
+        INSERT INTO worker (
+            username, password, fullName, email, phoneNumber,
+            dateOfBirth, gender, hireDate, status, salary,
+            specialization, enclosure
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """;
+
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            pstmt.setString(1, worker.getUsername());
+            pstmt.setString(2, worker.getPassword());
+            pstmt.setString(3, worker.getFullName());
+            pstmt.setString(4, worker.getEmail());
+            pstmt.setString(5, worker.getPhoneNumber());
+            pstmt.setDate(6, Date.valueOf(worker.getDateOfBirth()));
+            pstmt.setString(7, worker.getGender());
+            pstmt.setDate(8, Date.valueOf(worker.getHireDate()));
+            pstmt.setString(9, worker.getStatus().name());
+            pstmt.setInt(10, worker.getSalary());
+            pstmt.setString(11, worker.getSpecialization().name());
+            pstmt.setLong(12, worker.getEnclosure().getId());
+
+            int affected = pstmt.executeUpdate();
+            if (affected > 0) {
+                ResultSet keys = pstmt.getGeneratedKeys();
+                if (keys.next()) {
+                    worker.setId(keys.getLong(1));
+                }
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+
 }

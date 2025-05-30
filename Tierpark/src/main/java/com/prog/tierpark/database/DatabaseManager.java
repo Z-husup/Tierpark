@@ -50,6 +50,13 @@ public class DatabaseManager {
                 }
             }
 
+            sql = loadMockSql();
+            for (String command : sql.split(";")) {
+                if (!command.trim().isEmpty()) {
+                    stmt.execute(command.trim());
+                }
+            }
+
             System.out.println("✅ schema.sql executed successfully.");
 
         } catch (Exception e) {
@@ -65,6 +72,15 @@ public class DatabaseManager {
      */
     private static String loadSchemaSql() {
         try (InputStream in = DatabaseManager.class.getClassLoader().getResourceAsStream("schema.sql");
+             BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
+            return reader.lines().collect(Collectors.joining("\n"));
+        } catch (Exception e) {
+            throw new RuntimeException("❌ Could not load schema.sql", e);
+        }
+    }
+
+    private static String loadMockSql() {
+        try (InputStream in = DatabaseManager.class.getClassLoader().getResourceAsStream("mock.sql");
              BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
             return reader.lines().collect(Collectors.joining("\n"));
         } catch (Exception e) {

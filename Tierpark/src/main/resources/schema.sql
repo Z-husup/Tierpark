@@ -1,13 +1,13 @@
 -- Table for Admin
 CREATE TABLE admin (
-                       id INT PRIMARY KEY,
+                       id BIGINT IDENTITY(1,1) PRIMARY KEY,
                        username VARCHAR(255),
                        password VARCHAR(255)
 );
 
 -- Table for Species
 CREATE TABLE species (
-                         id BIGINT PRIMARY KEY,
+                         id BIGINT IDENTITY(1,1) PRIMARY KEY,
                          name VARCHAR(255),
                          habitat VARCHAR(255),
                          animalClass VARCHAR(255),
@@ -16,7 +16,7 @@ CREATE TABLE species (
 
 -- Table for AnimalStatus
 CREATE TABLE animalstatus (
-                              id BIGINT PRIMARY KEY,
+                              id BIGINT IDENTITY(1,1) PRIMARY KEY,
                               healthStatus VARCHAR(255),
                               breedingStatus VARCHAR(255),
                               isDead VARCHAR(255)
@@ -24,7 +24,7 @@ CREATE TABLE animalstatus (
 
 -- Table for Enclosure
 CREATE TABLE enclosure (
-                           id BIGINT PRIMARY KEY,
+                           id BIGINT IDENTITY(1,1) PRIMARY KEY,
                            name VARCHAR(255),
                            zone VARCHAR(255),
                            status VARCHAR(255),
@@ -37,7 +37,7 @@ CREATE TABLE enclosure (
 
 -- Table for Animal
 CREATE TABLE animal (
-                        id BIGINT PRIMARY KEY,
+                        id BIGINT IDENTITY(1,1) PRIMARY KEY,
                         name VARCHAR(255),
                         species BIGINT,
                         dateOfBirth DATE,
@@ -55,7 +55,7 @@ CREATE TABLE animal (
 
 -- Table for AnimalFood
 CREATE TABLE animalfood (
-                            id BIGINT PRIMARY KEY,
+                            id BIGINT IDENTITY(1,1) PRIMARY KEY,
                             name VARCHAR(255),
                             weight INT,
                             deliveryDate DATE,
@@ -66,7 +66,7 @@ CREATE TABLE animalfood (
 
 -- Table for MedicalHistory
 CREATE TABLE medicalhistory (
-                                id INT PRIMARY KEY,
+                                id BIGINT IDENTITY(1,1) PRIMARY KEY,
                                 animalId BIGINT,
                                 description VARCHAR(255),
                                 FOREIGN KEY (animalId) REFERENCES animal(id)
@@ -74,7 +74,7 @@ CREATE TABLE medicalhistory (
 
 -- Table for Schedule
 CREATE TABLE schedule (
-                          id BIGINT PRIMARY KEY,
+                          id BIGINT IDENTITY(1,1) PRIMARY KEY,
                           name VARCHAR(255),
                           scheduleType VARCHAR(255),
                           startingTime DATE,
@@ -84,7 +84,7 @@ CREATE TABLE schedule (
 
 -- Table for Worker
 CREATE TABLE worker (
-                        id BIGINT PRIMARY KEY,
+                        id BIGINT IDENTITY(1,1) PRIMARY KEY,
                         username VARCHAR(255),
                         password VARCHAR(255),
                         fullName VARCHAR(255),

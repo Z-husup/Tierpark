@@ -150,6 +150,39 @@ public class AdminRepository {
 
         return false;
     }
+
+
+    /**
+     * Retrieves an {@link Admin} user by their username.
+     *
+     * @param username the username of the admin to retrieve
+     * @return the {@link Admin} object if found; otherwise, {@code null}
+     */
+    public Admin getAdminByUsername(String username) {
+        String sql = "SELECT * FROM admin WHERE username = ?";
+
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, username);
+            ResultSet resultSet = pstmt.executeQuery();
+
+            if (resultSet.next()) {
+                return new Admin(
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password")
+                );
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
 }
 
 

@@ -15,5 +15,10 @@ public class Schedule {
 
     private ScheduleType scheduleType;
     private LocalDateTime startingTime;
+
+    @Override
+    public String toString() {
+        return name + " (" + scheduleType + ") - " + startingTime;
+    }
 }
 
