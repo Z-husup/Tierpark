@@ -2,11 +2,13 @@ package com.prog.tierpark.model;
 
 import com.prog.tierpark.model.enums.WorkerSpecialization;
 import com.prog.tierpark.model.enums.WorkerStatus;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor
 public class Worker {
     private Long id;
 
@@ -22,7 +24,7 @@ public class Worker {
     private WorkerStatus status;
     private int salary;
     private WorkerSpecialization specialization;
-
     private Enclosure enclosure;
+
 }
 

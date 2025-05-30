@@ -11,6 +11,7 @@ module com.prog.tierpark {
     requires java.sql;
     requires static lombok;
     requires atlantafx.base;
+    requires java.desktop;
 
     opens com.prog.tierpark to javafx.fxml;
     exports com.prog.tierpark;

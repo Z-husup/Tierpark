@@ -20,7 +20,7 @@ public class DatabaseManager {
      * <p>
      * This connection string targets the 'Tierpark' database on the 'SQLEXPRESS' instance.
      */
-    private static final String URL =
+    public static final String URL =
             "jdbc:sqlserver://localhost\\SQLEXPRESS;integratedSecurity=true;databaseName=Tierpark;encrypt=true;trustServerCertificate=true";
 
     /**
