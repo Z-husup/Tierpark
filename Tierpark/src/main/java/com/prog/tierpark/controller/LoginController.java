@@ -32,6 +32,7 @@ public class LoginController {
         String role = roleComboBox.getValue();
 
         // TODO: Add actual authentication logic
+
         if (role.equals("ADMIN")) {
             Application.switchScene("admin-menu-view.fxml");
         }

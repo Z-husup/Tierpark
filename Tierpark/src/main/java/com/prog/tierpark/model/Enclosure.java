@@ -20,5 +20,7 @@ public class Enclosure {
     private String area;
 
     private List<Worker> workers;
+    private List<Animal> animals;
+    private List<Schedule> schedules;
 }
 

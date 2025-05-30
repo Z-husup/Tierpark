@@ -1,5 +1,6 @@
 package com.prog.tierpark.controller;
 
+import com.prog.tierpark.model.Worker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -49,6 +50,7 @@ public class NewWorkerController {
     private void handleAddNewWorker() {
         System.out.println("Adding new worker...");
 
+        int id = 0;
         String username = usernameField.getText();
         String password = passwordField.getText();
         String fullName = fullNameField.getText();
@@ -59,6 +61,8 @@ public class NewWorkerController {
         String enclosure = enclosureCombo.getValue() != null ? enclosureCombo.getValue().toString() : "";
         String status = statusCombo.getValue() != null ? statusCombo.getValue().toString() : "";
         String salary = salaryField.getText();
+
+
 
         // TODO: Add validation and persist logic
     }
