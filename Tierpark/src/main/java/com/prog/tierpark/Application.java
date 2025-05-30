@@ -67,8 +67,9 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        // Test MSSQL database connection
+        // MSSQL database connection
         try (Connection connection = DatabaseManager.getConnection()) {
+            DatabaseManager.executeSchema();
             System.out.println("✅ MSSQL соединение установлено!");
         } catch (SQLException e) {
             System.out.println("❌ Ошибка подключения:");
