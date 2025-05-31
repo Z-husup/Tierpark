@@ -8,8 +8,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Repository class responsible for accessing schedule data from the database.
+ */
 public class ScheduleRepository {
 
+    /**
+     * Retrieves a list of schedules assigned to a specific enclosure.
+     *
+     * @param enclosureId the ID of the enclosure whose schedules should be fetched.
+     * @return a list of {@link Schedule} objects associated with the given enclosure.
+     */
     public List<Schedule> getSchedulesByEnclosureId(long enclosureId) {
         List<Schedule> list = new ArrayList<>();
         String sql = "SELECT * FROM schedule WHERE enclosure = ?";
@@ -36,3 +49,4 @@ public class ScheduleRepository {
         return list;
     }
 }
+

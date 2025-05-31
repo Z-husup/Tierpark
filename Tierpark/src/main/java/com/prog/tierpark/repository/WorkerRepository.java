@@ -218,6 +218,11 @@ public class WorkerRepository {
         return false;
     }
 
+    /**
+     * Deletes a worker from the database using the given ID.
+     *
+     * @param id The unique identifier of the worker to be deleted.
+     */
     public void deleteWorker(Long id) {
         String sql = "DELETE FROM worker WHERE id = ?";
 
@@ -239,6 +244,12 @@ public class WorkerRepository {
         }
     }
 
+    /**
+     * Updates an existing worker's information in the database.
+     *
+     * @param worker The {@link Worker} object containing updated worker data.
+     * @return {@code true} if the update was successful, {@code false} otherwise.
+     */
     public boolean updateWorker(Worker worker) {
         String sql = "UPDATE worker SET username=?, password=?, fullName=?, email=?, phoneNumber=?, " +
                 "dateOfBirth=?, gender=?, hireDate=?, status=?, salary=?, specialization=?, enclosure=? WHERE id=?";
