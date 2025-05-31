@@ -239,12 +239,9 @@ public class WorkerRepository {
         }
     }
 
-    public void updateWorker(Worker worker) {
-        String sql = "UPDATE worker SET " +
-                "username = ?, password = ?, fullName = ?, email = ?, phoneNumber = ?, " +
-                "dateOfBirth = ?, gender = ?, hireDate = ?, status = ?, salary = ?, " +
-                "specialization = ?, enclosure = ? " +
-                "WHERE id = ?";
+    public boolean updateWorker(Worker worker) {
+        String sql = "UPDATE worker SET username=?, password=?, fullName=?, email=?, phoneNumber=?, " +
+                "dateOfBirth=?, gender=?, hireDate=?, status=?, salary=?, specialization=?, enclosure=? WHERE id=?";
 
         try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -257,27 +254,19 @@ public class WorkerRepository {
             stmt.setDate(6, Date.valueOf(worker.getDateOfBirth()));
             stmt.setString(7, worker.getGender());
             stmt.setDate(8, Date.valueOf(worker.getHireDate()));
-            stmt.setString(9, worker.getStatus().name()); // enum to string
+            stmt.setString(9, worker.getStatus().name());
             stmt.setInt(10, worker.getSalary());
-            stmt.setString(11, worker.getSpecialization().name()); // enum to string
-            stmt.setLong(12, worker.getEnclosure().getId()); // FK reference
+            stmt.setString(11, worker.getSpecialization().name());
+            stmt.setLong(12, worker.getEnclosure().getId());
+            stmt.setLong(13, worker.getId());
 
-            stmt.setLong(13, worker.getId()); // WHERE clause
-
-            int updated = stmt.executeUpdate();
-            if (updated > 0) {
-                System.out.println("✅ Worker updated successfully (id = " + worker.getId() + ")");
-            } else {
-                System.out.println("⚠️ Worker not found (id = " + worker.getId() + ")");
-            }
+            return stmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.out.println("❌ Failed to update worker (id = " + worker.getId() + ")");
             e.printStackTrace();
+            return false;
         }
     }
-
-
 
 
 
