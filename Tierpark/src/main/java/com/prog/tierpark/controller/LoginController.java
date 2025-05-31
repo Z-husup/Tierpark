@@ -1,14 +1,21 @@
 package com.prog.tierpark.controller;
 
 import com.prog.tierpark.Application;
+import com.prog.tierpark.Session;
 import com.prog.tierpark.model.Admin;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.service.AdminService;
 import com.prog.tierpark.service.WorkerService;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * Controller responsible for handling user login via the JavaFX interface.
@@ -67,14 +74,17 @@ public class LoginController {
             Worker logged = service.login(username, password);
             if (logged != null) {
                 System.out.println("✅ Login successful: " + logged.getFullName());
+
+                Session.setLoggedInWorker(logged);
                 Application.switchScene("worker-menu-view.fxml");
+
+
             } else {
                 System.out.println("❌ Invalid credentials.");
             }
         }
-        else {
-            System.out.printf("Attempt login: %s / %s as %s%n", username, password, role);
-        }
+
+
     }
 }
 

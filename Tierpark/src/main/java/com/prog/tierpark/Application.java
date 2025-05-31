@@ -34,7 +34,7 @@ public class Application extends javafx.application.Application {
     /**
      * Group used to scale the application's main content.
      */
-    private static Group scaledGroup;
+    public static Group scaledGroup;
 
     /**
      * The base width used for calculating scaling factor.

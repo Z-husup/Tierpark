@@ -37,5 +37,12 @@ public class Enclosure {
         this.condition = condition;
         this.area = area;
     }
+
+    @Override
+    public String toString() {
+        return name + " (" + type + ")";
+    }
+
+
 }
 

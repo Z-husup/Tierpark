@@ -1,5 +1,7 @@
 package com.prog.tierpark.controller;
 
+import com.prog.tierpark.Application;
+import com.prog.tierpark.Session;
 import com.prog.tierpark.model.Schedule;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.repository.ScheduleRepository;
@@ -10,8 +12,6 @@ import javafx.scene.text.Text;
 import java.util.List;
 
 public class WorkerMenuController {
-
-    private Worker loggedInWorker;
 
     @FXML
     private ListView scheduleViewList;
@@ -39,30 +39,37 @@ public class WorkerMenuController {
 
     @FXML
     public void initialize() {
-        setWorker(loggedInWorker);
-        // TODO: Optional: populate schedule list or set worker info
+        if (Session.getLoggedInWorker()!= null){
+            setWorker(Session.getLoggedInWorker());
+        }
     }
 
     @FXML
     private void toEnclosureListPage() {
         System.out.println("Navigating to Enclosure List Page");
-        // TODO: Implement scene switch logic
+        Application.switchScene("enclosure-list-view.fxml");
     }
 
     @FXML
     private void toFoodManagementPage() {
         System.out.println("Navigating to Food Management Page");
-        // TODO: Implement scene switch logic
+        Application.switchScene("food-management-view.fxml");
+
+        //TODO: Finish food management page
+
     }
 
     @FXML
     private void toEnclosureManagementPage() {
         System.out.println("Navigating to Enclosure Management Page");
-        // TODO: Implement scene switch logic
+        Application.switchScene("enclosure-management-view.fxml");
+
+        //TODO: Finish enclosure management page
+
     }
 
     public void setWorker(Worker worker) {
-        this.loggedInWorker = worker;
+        worker = Session.getLoggedInWorker();
 
         workerUsernameLabel.setText(worker.getUsername());
         workerFullNameLabel.setText(worker.getFullName());
@@ -83,6 +90,4 @@ public class WorkerMenuController {
             scheduleViewList.getItems().clear();
         }
     }
-
-
 }

@@ -26,5 +26,10 @@ public class Worker {
     private WorkerSpecialization specialization;
     private Enclosure enclosure;
 
+    @Override
+    public String toString() {
+        return fullName + " (" + username + ")";
+    }
+
 }
 
