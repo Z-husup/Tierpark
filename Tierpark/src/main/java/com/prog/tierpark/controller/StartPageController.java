@@ -18,6 +18,6 @@ public class StartPageController {
 
     @FXML
     protected void toTicketPage() {
-        Application.switchScene("ticket-view.fxml");
+        Application.switchScene("ticket-page-view.fxml");
     }
 }

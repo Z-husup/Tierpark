@@ -2,6 +2,7 @@ package com.prog.tierpark.model;
 
 import java.util.Date;
 
+import com.prog.tierpark.model.enums.TicketStatus;
 import com.prog.tierpark.model.enums.TicketType;
 
 import lombok.Data;
@@ -12,6 +13,7 @@ public class Ticket {
     TicketType type;
     Date day;
     double price;
+    TicketStatus status = TicketStatus.active;
     public Ticket(TicketType type, Date day) {
         this.type = type;
         this.day = day;
@@ -32,7 +34,12 @@ public class Ticket {
                 break;
         }
     }
+    public Ticket(long id, TicketType type, Date day, double price, TicketStatus status) {
+        this.id = id;
+        this.type = type;
+        this.day = day;
+        this.price = price;
+        this.status = status;
+    }
 
-    
-    
 }
