@@ -1,23 +1,12 @@
 package com.prog.tierpark.controller;
 
-import com.prog.tierpark.Application;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Worker;
-import com.prog.tierpark.repository.EnclosureRepository;
-import com.prog.tierpark.repository.WorkerRepository;
 import com.prog.tierpark.service.AdminService;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * JavaFX controller class for the Admin Menu UI.

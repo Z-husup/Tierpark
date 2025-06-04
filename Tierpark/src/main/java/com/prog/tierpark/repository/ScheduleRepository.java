@@ -1,16 +1,16 @@
 package com.prog.tierpark.repository;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.prog.tierpark.database.DatabaseManager;
 import com.prog.tierpark.model.Schedule;
 import com.prog.tierpark.model.enums.ScheduleType;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Repository class responsible for accessing schedule data from the database.

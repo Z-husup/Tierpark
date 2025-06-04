@@ -1,8 +1,8 @@
 package com.prog.tierpark.controller;
 
 import com.prog.tierpark.Application;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 public class StartPageController {
 

@@ -6,16 +6,10 @@ import com.prog.tierpark.model.Admin;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.service.AdminService;
 import com.prog.tierpark.service.WorkerService;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * Controller responsible for handling user login via the JavaFX interface.

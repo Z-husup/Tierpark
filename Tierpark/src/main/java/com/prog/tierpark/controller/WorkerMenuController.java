@@ -1,15 +1,16 @@
 package com.prog.tierpark.controller;
 
+import java.util.List;
+
 import com.prog.tierpark.Application;
 import com.prog.tierpark.Session;
 import com.prog.tierpark.model.Schedule;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.repository.ScheduleRepository;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-
-import java.util.List;
 
 /**
  * Controller for the Worker menu view, displaying worker info and navigation.

@@ -1,24 +1,17 @@
 package com.prog.tierpark.controller;
 
-import com.prog.tierpark.database.DatabaseManager;
+import java.time.LocalDate;
+
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.model.enums.WorkerStatus;
 import com.prog.tierpark.repository.EnclosureRepository;
-import com.prog.tierpark.repository.WorkerRepository;
 import com.prog.tierpark.service.WorkerService;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Controller class for editing an existing worker's information.

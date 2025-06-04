@@ -1,15 +1,15 @@
 package com.prog.tierpark.controller;
 
+import java.util.List;
+
 import com.prog.tierpark.Application;
 import com.prog.tierpark.Session;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.repository.EnclosureRepository;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-
-import java.util.List;
 
 public class EnclosureListController {
 
