@@ -104,6 +104,6 @@ create table ticket(
     id BIGINT IDENTITY(1,1)primary key,
     type VARCHAR(255),
     price DECIMAL(10,2),
-    issueDate DATE,
-    status VARCHAR(255),
+    buyDate DATE,
+    ticketStatus VARCHAR(255),
 );
