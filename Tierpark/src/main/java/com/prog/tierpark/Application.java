@@ -1,6 +1,7 @@
 package com.prog.tierpark;
 
 import atlantafx.base.theme.NordLight;
+import atlantafx.base.theme.PrimerLight;
 import com.prog.tierpark.database.DatabaseManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -79,7 +80,8 @@ public class Application extends javafx.application.Application {
         mainStage = stage;
 
         // Apply custom stylesheet theme
-        Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
+        Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
+//        Application.setUserAgentStylesheet(new NordLight().getUserAgentStylesheet());
 
         // Load initial view
         FXMLLoader loader = new FXMLLoader(Application.class.getResource("start-view.fxml"));

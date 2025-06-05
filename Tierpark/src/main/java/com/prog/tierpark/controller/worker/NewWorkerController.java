@@ -1,4 +1,4 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.worker;
 
 import java.time.LocalDate;
 
@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Controller for creating and adding a new worker to the system.
@@ -31,6 +32,7 @@ public class NewWorkerController {
     @FXML private TextField genderField;
     @FXML private ComboBox enclosureCombo;
     @FXML private ComboBox statusCombo;
+    @FXML private ComboBox specializationCombo;
     @FXML private TextField salaryField;
 
     /**
@@ -40,6 +42,7 @@ public class NewWorkerController {
     public void initialize() {
         statusCombo.getItems().addAll(WorkerStatus.values());
         enclosureCombo.getItems().addAll(new EnclosureRepository().getAllEnclosures());
+        specializationCombo.getItems().addAll(WorkerSpecialization.values());
     }
 
     /**
@@ -60,12 +63,16 @@ public class NewWorkerController {
                     LocalDate.now(),
                     (WorkerStatus) statusCombo.getValue(),
                     Integer.parseInt(salaryField.getText()),
-                    WorkerSpecialization.SUPERVISION,
+                    (WorkerSpecialization) specializationCombo.getValue(),
                     (Enclosure) enclosureCombo.getValue()
             );
 
             boolean success = new WorkerService().register(worker);
             System.out.println(success ? "✅ Worker created." : "❌ Failed to create.");
+
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

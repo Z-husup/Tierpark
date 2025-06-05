@@ -1,4 +1,4 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.worker;
 
 import java.time.LocalDate;
 
@@ -9,9 +9,11 @@ import com.prog.tierpark.repository.EnclosureRepository;
 import com.prog.tierpark.service.WorkerService;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Controller class for editing an existing worker's information.
@@ -19,6 +21,8 @@ import javafx.scene.control.TextField;
 public class EditWorkerController {
 
     private Worker worker;
+
+    private final EnclosureRepository enclosureRepository = new EnclosureRepository();
 
     @FXML private TextField usernameField;
     @FXML private TextField passwordField;
@@ -30,6 +34,7 @@ public class EditWorkerController {
     @FXML private ComboBox enclosureCombo;
     @FXML private ComboBox statusCombo;
     @FXML private TextField salaryField;
+    @FXML private Button changeDetailsButton;
 
     /**
      * Initializes the UI elements and loads enclosure and status data.
@@ -37,8 +42,7 @@ public class EditWorkerController {
     @FXML
     public void initialize() {
         statusCombo.getItems().addAll(WorkerStatus.values());
-        EnclosureRepository enclosureRepo = new EnclosureRepository();
-        enclosureCombo.getItems().addAll(enclosureRepo.getAllEnclosures());
+        enclosureCombo.getItems().addAll(enclosureRepository.getAllEnclosures());
     }
 
     /**
@@ -70,6 +74,9 @@ public class EditWorkerController {
 
             boolean success = new WorkerService().updateWorker(worker);
             System.out.println(success ? "✅ Worker updated." : "❌ Update failed.");
+
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.close();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,5 +113,7 @@ public class EditWorkerController {
         salaryField.setEditable(editable);
         enclosureCombo.setDisable(!editable);
         statusCombo.setDisable(!editable);
+
+        changeDetailsButton.setDisable(!editable);
     }
 }

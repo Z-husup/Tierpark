@@ -12,10 +12,12 @@ public class AnimalFood {
 
     private String name;
 
+    private int quantity;
     private int weight;
+
     private LocalDate deliveryDate;
     private LocalDate expirationDate;
+
     private String storageCondition;
-    private double quantity;
 }
 

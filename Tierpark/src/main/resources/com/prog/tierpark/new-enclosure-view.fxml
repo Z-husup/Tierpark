@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.NewEnclosureController">
+   <children>
+      <Text layoutX="165.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enclosure:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="165.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="165.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="165.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="165.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="166.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Condition:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Main Menu" />
+      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Back" />
+      <TextField fx:id="enclosureNameField" layoutX="272.0" layoutY="58.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="enclosureTypeField" layoutX="272.0" layoutY="105.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="enclosureStatusField" layoutX="272.0" layoutY="133.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="enclosureDescriptionField" layoutX="272.0" layoutY="199.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="enclosureConditionField" layoutX="272.0" layoutY="227.0" prefHeight="25.0" prefWidth="164.0" />
+      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleCreateNewEnclosure" prefHeight="25.0" prefWidth="577.0" text="Create new enclosure" />
+      <Text layoutX="166.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zone:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="167.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Area(m2): ">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="enclosureZoneField" layoutX="273.0" layoutY="264.0" prefHeight="25.0" prefWidth="164.0" />
+      <TextField fx:id="enclosureCapacityField" layoutX="273.0" layoutY="170.0" prefHeight="25.0" prefWidth="120.0" promptText="num" />
+      <TextField fx:id="enclosureAreaField" layoutX="273.0" layoutY="292.0" prefHeight="25.0" prefWidth="120.0" promptText="num" />
+   </children>
+</AnchorPane>

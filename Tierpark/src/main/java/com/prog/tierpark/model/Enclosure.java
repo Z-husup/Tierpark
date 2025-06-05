@@ -39,9 +39,7 @@ public class Enclosure {
     }
 
     @Override
-    public String toString() {
-        return name + " (" + type + ")";
-    }
+    public String toString() {return name + " (" + type + ","+ status +")";}
 
 
 }

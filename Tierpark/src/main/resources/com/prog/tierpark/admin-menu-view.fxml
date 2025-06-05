@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.AdminMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.admin.AdminMenuController">
    <children>
       <ListView fx:id="enclosureListView" layoutX="14.0" layoutY="201.0" prefHeight="589.0" prefWidth="683.0" />
       <ListView fx:id="workerListView" layoutX="728.0" layoutY="239.0" prefHeight="547.0" prefWidth="361.0" />
@@ -34,12 +34,13 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="16.0" layoutY="161.0" mnemonicParsing="false" onAction="#toManageEnclosure" prefHeight="25.0" prefWidth="526.0" text="manage enclosure" />
+      <Button layoutX="14.0" layoutY="161.0" mnemonicParsing="false" onAction="#toManageEnclosure" prefHeight="25.0" prefWidth="408.0" text="manage enclosure" />
       <Text fx:id="workerNameLabel" layoutX="741.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
       <Button layoutX="725.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleEditWorker" prefHeight="25.0" prefWidth="361.0" text="edit worker" />
+      <Button layoutX="435.0" layoutY="161.0" mnemonicParsing="false" onAction="#toEditEnclosure" prefHeight="25.0" prefWidth="116.0" text="edit" />
    </children>
 </AnchorPane>

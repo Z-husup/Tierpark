@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 public class Schedule {
     private Long id;
 
-    private String name;
+    private String description;
 
     private ScheduleType scheduleType;
     private LocalDateTime startingTime;
 
     @Override
     public String toString() {
-        return name + " (" + scheduleType + ") - " + startingTime;
+        return description + " (" + scheduleType + ") - " + startingTime;
     }
 }
 

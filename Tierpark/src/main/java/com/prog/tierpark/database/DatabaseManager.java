@@ -21,8 +21,8 @@ public class DatabaseManager {
      * This connection string targets the 'Tierpark' database on the 'SQLEXPRESS' instance.
      */
     public static final String URL =
-            // "jdbc:sqlserver://localhost\\SQLEXPRESS;integratedSecurity=true;databaseName=tierpark;encrypt=true;trustServerCertificate=true";
-            "jdbc:sqlserver://localhost:1433;databaseName=tierpark;user=sa;password=~ZD6JcPHaDZJ;encrypt=true;trustServerCertificate=true;";
+             "jdbc:sqlserver://localhost\\SQLEXPRESS;integratedSecurity=true;databaseName=tierpark;encrypt=true;trustServerCertificate=true";
+//            "jdbc:sqlserver://localhost:1433;databaseName=tierpark;user=sa;password=~ZD6JcPHaDZJ;encrypt=true;trustServerCertificate=true;";
 
     /**
      * Establishes and returns a JDBC connection to the database.

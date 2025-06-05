@@ -1,6 +1,8 @@
 package com.prog.tierpark.model;
 
 import com.prog.tierpark.model.enums.AnimalGender;
+import com.prog.tierpark.model.enums.AnimalGroup;
+import com.prog.tierpark.model.enums.HealthStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -13,14 +15,15 @@ public class Animal {
 
     private String name;
 
-    private Species species;
+    private AnimalGroup animalGroup;
     private LocalDate dateOfBirth;
     private LocalDate arrivalDate;
     private int age;
     private AnimalGender gender;
     private int size;
     private int weight;
-    private AnimalStatus status;
+    private HealthStatus healthStatus;
+    private MedicalHistory medicalHistory;
 
     private Enclosure enclosure;
 }
