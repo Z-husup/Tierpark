@@ -2,29 +2,21 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="808.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.TicketController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.TicketController">
    <children>
-      <Text layoutX="18.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Ticket">
+      <Text layoutX="32.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket page" wrappingWidth="124.755859375">
          <font>
-            <Font size="36.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-
-      <Line endX="974.0" endY="0.0" layoutX="115.0" layoutY="78.0" startX="-100.0" />
-
-      <!-- Selected Ticket Details -->
-      <Text layoutX="18.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Details:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ListView fx:id="ticketDetailsView" layoutX="27.0" layoutY="147.0" prefHeight="400.0" prefWidth="540.0" />
-
-      <!-- Buttons -->
-      <Button layoutX="18.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleBuyTicket" prefHeight="40.0" prefWidth="260.0" text="Buy Ticket" />
-      <!-- <Button layoutX="825.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleCancelTicket" prefHeight="40.0" prefWidth="260.0" text="Cancel Ticket" /> -->
+      <Pane layoutX="32.0" layoutY="67.0" prefHeight="266.0" prefWidth="260.0">
+         <Text layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which group do you prefer." />
+         <ComboBox layoutX="14.0" layoutY="65.0" prefWidth="150.0" />
+         <Text layoutX="14.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose date" />
+         <DatePicker layoutX="14.0" layoutY="141.0" />
+      </Pane>
+      <Pane layoutX="300.0" layoutY="67.0" prefHeight="266.0" prefWidth="260.0" />
    </children>
 </AnchorPane>
