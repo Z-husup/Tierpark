@@ -1,83 +1,105 @@
 package com.prog.tierpark.controller;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 import com.prog.tierpark.model.Ticket;
+import com.prog.tierpark.model.enums.TicketType;
 import com.prog.tierpark.service.TicketService;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+/**
+ * Controller-Klasse für die Verwaltung von Ticket-Interaktionen in der GUI.
+ * <p>
+ * Verantwortlich für das Kaufen und Zurückerstatten von Tickets sowie die
+ * Initialisierung der GUI-Komponenten wie ComboBox und DatePicker.
+ * </p>
+ */
 public class TicketController {
-    TicketService ticketService;
-        @FXML
-    private TextField nameField;
+    private final TicketService ticketService = new TicketService();
 
     @FXML
-    private TextField ticketCountField;
+    private ComboBox<TicketType> groupComboBox;
 
     @FXML
-    private Button purchaseButton;
+    private DatePicker datePicker;
+
+    @FXML
+    private TextField ticketIdField;
 
     @FXML
     private Label statusLabel;
 
+    /**
+     * Initialisiert die GUI-Komponenten bei Laden des Controllers.
+     * Füllt die ComboBox mit den verfügbaren Tickettypen und setzt das Statuslabel zurück.
+     */
     @FXML
     private void initialize() {
-        // Инициализация контроллера после загрузки FXML
-        statusLabel.setText("");
+        groupComboBox.getItems().addAll(TicketType.values());
+        groupComboBox.setPromptText("Wähle Tickettyp");
+        if (statusLabel != null) {
+            statusLabel.setText("");
+        }
     }
 
+    /**
+     * Event-Handler für den Kauf eines Tickets.
+     * Liest die Eingaben aus der GUI aus, erstellt ein neues Ticket und speichert es.
+     * Setzt eine Statusmeldung mit Preis und Ticket-ID oder Fehlerhinweis.
+     *
+     * @param event das ActionEvent, ausgelöst durch das Klicken des Kauf-Buttons
+     */
     @FXML
     private void handleBuyTicket(ActionEvent event) {
-        String name = nameField.getText();
-        String ticketCountText = ticketCountField.getText();
+        TicketType selectedType = groupComboBox.getValue();
+        LocalDate selectedDate = datePicker.getValue();
+
+        if (selectedType == null) {
+            statusLabel.setText("Bitte Tickettyp auswählen.");
+            return;
+        }
+        if (selectedDate == null) {
+            statusLabel.setText("Bitte Datum auswählen.");
+            return;
+        }
 
         try {
-            int ticketCount = Integer.parseInt(ticketCountText);
-            if (ticketCount <= 0) {
-                statusLabel.setText("Введите положительное число билетов.");
+            Date date = Date.from(selectedDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            Ticket newTicket = new Ticket(selectedType, date);
+            Ticket savedTicket = ticketService.addTicket(newTicket);
+
+            if (savedTicket != null) {
+                statusLabel.setText("Ticket gekauft! Preis: " + savedTicket.getPrice() +
+                        " €, Ticket-ID: " + savedTicket.getId());
             } else {
-                // Тут может быть логика покупки билета
-                statusLabel.setText("Билеты куплены: " + ticketCount + " шт. для " + name);
+                statusLabel.setText("Fehler beim Speichern des Tickets.");
             }
-        } catch (NumberFormatException e) {
-            statusLabel.setText("Введите корректное число билетов.");
+        } catch (Exception e) {
+            statusLabel.setText("Ein Fehler ist aufgetreten: " + e.getMessage());
         }
     }
 
+    /**
+     * Event-Handler für die Rückerstattung eines Tickets.
+     * Liest die Ticket-ID aus und zeigt eine Bestätigung oder Fehlermeldung an.
+     *
+     * @param event das ActionEvent, ausgelöst durch das Klicken des Rückerstattungs-Buttons
+     */
     @FXML
-    private void handleRefund (ActionEvent event) {
-        String name = nameField.getText();
-        String ticketCountText = ticketCountField.getText();
+    private void handleRefund(ActionEvent event) {
+        String ticketId = ticketIdField.getText();
 
-        try {
-            int ticketCount = Integer.parseInt(ticketCountText);
-            if (ticketCount <= 0) {
-                statusLabel.setText("Введите положительное число билетов для возврата.");
-            } else {
-                // Тут может быть логика возврата билета
-                statusLabel.setText("Билеты возвращены: " + ticketCount + " шт. для " + name);
-            }
-        } catch (NumberFormatException e) {
-            statusLabel.setText("Введите корректное число билетов для возврата.");
+        if (ticketId == null || ticketId.isEmpty()) {
+            statusLabel.setText("Bitte gültige Ticket-ID eingeben.");
+            return;
         }
-    }
 
-    @FXML
-    private void getTicketAsQr(){
-        
+        // Hier sollte die Refund-Logik implementiert werden.
+        statusLabel.setText("Ticket mit ID " + ticketId + " wurde zurückerstattet.");
     }
-
-    @FXML
-    private List<Ticket>  getAllTickets(ActionEvent event) {
-        // Здесь должна быть логика получения всех билетов
-        statusLabel.setText("Получены все билеты.");
-        return ticketService.getAllTickets();
-    }
-
-    
 }

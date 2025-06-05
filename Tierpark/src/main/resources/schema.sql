@@ -85,7 +85,8 @@ CREATE TABLE worker (
 create table ticket(
     id BIGINT IDENTITY(1,1)primary key,
     type VARCHAR(255),
+    status varchar(255),
     price DECIMAL(10,2),
-    buyDate DATE,
+    theDate DATE,
     ticketStatus VARCHAR(255),
 );
