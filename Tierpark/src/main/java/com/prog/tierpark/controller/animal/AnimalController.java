@@ -17,7 +17,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
-import java.time.LocalDate;
 
 /**
  * Controller class for managing the details of an animal in the UI.

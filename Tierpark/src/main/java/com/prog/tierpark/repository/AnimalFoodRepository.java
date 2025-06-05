@@ -4,17 +4,20 @@ import com.prog.tierpark.database.DatabaseManager;
 import com.prog.tierpark.model.AnimalFood;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Repository class responsible for managing AnimalFood data in the database.
+ * Provides methods for inserting, updating, and retrieving animal food records.
+ */
 public class AnimalFoodRepository {
 
     /**
-     * Adds a new AnimalFood entry to the database.
+     * Adds a new {@link AnimalFood} entry to the database.
      *
      * @param food the AnimalFood object to insert
-     * @return true if insertion was successful
+     * @return true if insertion was successful, false otherwise
      */
     public boolean addFood(AnimalFood food) {
         String sql = """
@@ -49,9 +52,9 @@ public class AnimalFoodRepository {
     }
 
     /**
-     * Retrieves all AnimalFood records from the database.
+     * Retrieves all {@link AnimalFood} records from the database.
      *
-     * @return list of AnimalFood
+     * @return list of AnimalFood objects
      */
     public List<AnimalFood> getAllFood() {
         List<AnimalFood> list = new ArrayList<>();
@@ -81,11 +84,17 @@ public class AnimalFoodRepository {
         return list;
     }
 
+    /**
+     * Updates an existing {@link AnimalFood} record in the database.
+     *
+     * @param food the AnimalFood object with updated values
+     * @return true if update was successful, false otherwise
+     */
     public boolean updateFood(AnimalFood food) {
         String sql = """
-        UPDATE animalfood SET name=?, quantity=?, weight=?, deliveryDate=?, expirationDate=?, storageCondition=?
-        WHERE id=?
-    """;
+            UPDATE animalfood SET name=?, quantity=?, weight=?, deliveryDate=?, expirationDate=?, storageCondition=?
+            WHERE id=?
+        """;
 
         try (Connection conn = DatabaseManager.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -106,5 +115,5 @@ public class AnimalFoodRepository {
 
         return false;
     }
-
 }
+
