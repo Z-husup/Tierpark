@@ -1,4 +1,4 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!--&lt;!&ndash; <?xml version="1.0" encoding="UTF-8"?>-->
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -35,4 +35,4 @@
       <Button layoutX="545.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleBuyTicket" prefHeight="40.0" prefWidth="260.0" text="Buy Ticket" />
       <Button layoutX="825.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleCancelTicket" prefHeight="40.0" prefWidth="260.0" text="Cancel Ticket" />
    </children>
-</AnchorPane> -->
+</AnchorPane>

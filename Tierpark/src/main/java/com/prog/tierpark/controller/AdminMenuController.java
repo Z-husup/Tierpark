@@ -1,5 +1,6 @@
 package com.prog.tierpark.controller;
 
+import com.prog.tierpark.Application;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.service.AdminService;
@@ -110,6 +111,15 @@ public class AdminMenuController {
      */
     @FXML
     private void toManageEnclosure() {
+        Application.switchScene("enclosure-menu-view.fxml");
+    }
+
+    /**
+     * Called when the "Edit Enclosure" button is clicked.
+     * Opens the edit dialog for the selected enclosure.
+     */
+    @FXML
+    private void toEditEnclosure() {
         Enclosure selected = enclosureListView.getSelectionModel().getSelectedItem();
         if (selected != null) {
             adminService.openEditEnclosureDialog(selected);

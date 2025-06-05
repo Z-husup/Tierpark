@@ -23,13 +23,12 @@ public class Worker {
     private LocalDate hireDate;
     private WorkerStatus status;
     private int salary;
+
     private WorkerSpecialization specialization;
     private Enclosure enclosure;
 
     @Override
-    public String toString() {
-        return fullName + " (" + username + ")";
-    }
+    public String toString() {return fullName + " - " + specialization;}
 
 }
 

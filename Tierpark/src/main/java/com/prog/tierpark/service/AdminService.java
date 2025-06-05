@@ -1,6 +1,7 @@
 package com.prog.tierpark.service;
 
 import com.prog.tierpark.Application;
+import com.prog.tierpark.controller.EditEnclosureController;
 import com.prog.tierpark.controller.EditWorkerController;
 import com.prog.tierpark.model.Admin;
 import com.prog.tierpark.model.Enclosure;
@@ -63,7 +64,7 @@ public class AdminService {
      * Opens a dialog window to create a new worker.
      */
     public void openNewWorkerDialog() {
-        openDialog("/com/prog/tierpark/view/new-worker-view.fxml", null);
+        openDialog("/com/prog/tierpark/new-worker-view.fxml", null);
     }
 
     /**
@@ -71,14 +72,14 @@ public class AdminService {
      * @param worker The worker to edit.
      */
     public void openEditWorkerDialog(Worker worker) {
-        openDialog("/com/prog/tierpark/view/edit-worker-view.fxml", worker);
+        openDialog("/com/prog/tierpark/edit-worker-view.fxml", worker);
     }
 
     /**
      * Opens a dialog window to create a new enclosure.
      */
     public void openNewEnclosureDialog() {
-        openDialog("/com/prog/tierpark/view/new-enclosure-view.fxml", null);
+        openDialog("/com/prog/tierpark/new-enclosure-view.fxml", null);
     }
 
     /**
@@ -86,7 +87,7 @@ public class AdminService {
      * @param enclosure The enclosure to edit.
      */
     public void openEditEnclosureDialog(Enclosure enclosure) {
-        openDialog("/com/prog/tierpark/view/edit-enclosure-view.fxml", enclosure);
+        openDialog("/com/prog/tierpark/edit-enclosure-view.fxml", enclosure);
     }
 
     /**
@@ -119,11 +120,13 @@ public class AdminService {
             Parent root = loader.load();
 
             if (data != null) {
+                if (data instanceof Enclosure enclosure) {
+                    EditEnclosureController controller = loader.getController();
+                    controller.setEnclosure(enclosure);
+                }
                 if (data instanceof Worker worker) {
                     EditWorkerController controller = loader.getController();
                     controller.setWorker(worker);
-                } else if (data instanceof Enclosure enclosure) {
-                    // TODO: Implement controller.setEnclosure(enclosure);
                 }
             }
 

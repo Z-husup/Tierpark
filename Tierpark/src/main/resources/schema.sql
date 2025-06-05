@@ -75,7 +75,7 @@ CREATE TABLE medicalhistory (
 -- Table for Schedule
 CREATE TABLE schedule (
                           id BIGINT IDENTITY(1,1) PRIMARY KEY,
-                          name VARCHAR(255),
+                          description VARCHAR(255),
                           scheduleType VARCHAR(255),
                           startingTime DATE,
                           enclosure BIGINT,

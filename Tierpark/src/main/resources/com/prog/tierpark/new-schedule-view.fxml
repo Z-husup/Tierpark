@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="531.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.NewScheduleView">
+   <children>
+      <Button layoutX="17.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="496.0" text="Add" />
+      <TextField layoutX="166.0" layoutY="273.0" />
+   </children>
+</AnchorPane>

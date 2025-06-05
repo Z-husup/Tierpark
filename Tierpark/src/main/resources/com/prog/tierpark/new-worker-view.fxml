@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.NewWorkerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.NewWorkerController">
    <children>
-      <Button layoutX="470.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleAddNewWorker" text="add new worker" />
+      <Button layoutX="469.0" layoutY="492.0" mnemonicParsing="false" onAction="#handleAddNewWorker" text="add new worker" />
       <TextField fx:id="usernameField" layoutX="68.0" layoutY="320.0" promptText="username" />
       <TextField fx:id="passwordField" layoutX="68.0" layoutY="360.0" promptText="password" />
       <Text layoutX="68.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LogIn details:">
@@ -21,7 +21,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Line endX="12.999969482421875" endY="-76.0" layoutX="287.0" layoutY="76.0" startX="13.0" startY="396.0" />
+      <Line endX="12.999969482421875" endY="-76.0" layoutX="287.0" layoutY="76.0" startX="12.999969482421875" startY="456.0" />
       <TextField fx:id="fullNameField" layoutX="324.0" layoutY="91.0" prefHeight="25.0" prefWidth="247.0" promptText="full-name" />
       <TextField fx:id="emailField" layoutX="324.0" layoutY="119.0" prefHeight="25.0" prefWidth="247.0" promptText="email" />
       <Text layoutX="324.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Worker details:">
@@ -42,5 +42,7 @@
             <Image url="@images/worker-logo.jpg" />
          </image>
       </ImageView>
+      <ComboBox fx:id="specializationCombo" layoutX="409.0" layoutY="440.0" prefHeight="32.0" prefWidth="162.0" promptText="SUPERVISION" />
+      <Text layoutX="324.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Specialization:" wrappingWidth="77.6328125" />
    </children>
 </AnchorPane>

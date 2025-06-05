@@ -48,5 +48,28 @@ public class ScheduleRepository {
 
         return list;
     }
+
+    /**
+     * Deletes a schedule from the database by its ID.
+     *
+     * @param id the ID of the schedule to delete.
+     * @return {@code true} if the deletion was successful, {@code false} otherwise.
+     */
+    public boolean deleteSchedule(long id) {
+        String sql = "DELETE FROM schedule WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setLong(1, id);
+            return pstmt.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 }
 
