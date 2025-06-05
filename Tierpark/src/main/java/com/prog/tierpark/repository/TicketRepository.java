@@ -92,6 +92,17 @@ public class TicketRepository {
      * @param ticket Das Ticket mit aktualisierten Werten
      */
     public void updateTicket(Ticket ticket) {
-        saveTicket(ticket);
+        String sql = "UPDATE ticket SET type = ?, theDate = ?, price = ?, status = ? WHERE id = ?";
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, ticket.getType().name());
+            pstmt.setDate(2, new java.sql.Date(ticket.getDay().getTime()));
+            pstmt.setDouble(3, ticket.getPrice());
+            pstmt.setString(4, ticket.getStatus().name());
+            pstmt.setLong(5, ticket.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

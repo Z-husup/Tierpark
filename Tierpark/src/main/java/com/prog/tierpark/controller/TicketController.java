@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+import com.prog.tierpark.Application;
 import com.prog.tierpark.model.Ticket;
 import com.prog.tierpark.model.enums.TicketStatus;
 import com.prog.tierpark.model.enums.TicketType;
@@ -104,5 +105,10 @@ public class TicketController {
         newTicket.setStatus(TicketStatus.refunded);
         ticketService.changeTicket(newTicket);
         statusLabel.setText("Ticket mit ID " + ticketId + " wurde zurückerstattet.");
+    }
+
+    @FXML
+    private void goToStartPage(ActionEvent event) {
+        Application.switchScene("start-view.fxml");
     }
 }

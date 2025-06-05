@@ -63,6 +63,6 @@ public class TicketService {
         updatedTicket.setDay(ticket.getDay());
         updatedTicket.setStatus(ticket.getStatus());
         updatedTicket.setType(ticket.getType());
-        saveTicket(updatedTicket);
+        ticketRepository.updateTicket(updatedTicket);
     }
 }
