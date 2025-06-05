@@ -3,6 +3,7 @@ package com.prog.tierpark.controller.enclosure;
 import com.prog.tierpark.Application;
 import com.prog.tierpark.SceneContext;
 import com.prog.tierpark.Session;
+import com.prog.tierpark.controller.animal.AnimalController;
 import com.prog.tierpark.model.Animal;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Schedule;
@@ -143,9 +144,26 @@ public class EnclosureMenuController {
     private void toAnimalManagePage() {
         Animal selected = animalsViewList.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            System.out.println("📋 Managing animal: " + selected.getName());
-            // TODO: Open animal management UI
+            try {
+                FXMLLoader loader = new FXMLLoader(Application.class.getResource("animal-view.fxml"));
+                Parent root = loader.load();
+
+                AnimalController controller = loader.getController();
+                controller.setAnimal(selected);
+
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Animal Details");
+                dialogStage.initModality(Modality.APPLICATION_MODAL);
+                dialogStage.setScene(new Scene(root));
+                dialogStage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("⚠️ No animal selected.");
         }
     }
+
 }
 

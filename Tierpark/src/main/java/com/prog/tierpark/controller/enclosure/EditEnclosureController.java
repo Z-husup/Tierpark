@@ -119,51 +119,50 @@ public class EditEnclosureController {
 
     @FXML
     private void handleNewAnimal() {
-        System.out.println("➕ Add new animal to: " + enclosure.getName());
+            try {
+                FXMLLoader loader = new FXMLLoader(Application.class.getResource("new-animal-view.fxml"));
+                Parent root = loader.load();
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/prog/tierpark/view/new-animal-form.fxml"));
-            Parent root = loader.load();
+                NewAnimalController controller = loader.getController();
 
-            NewAnimalController controller = loader.getController();
-            controller.setEnclosure(enclosure);
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Animal Details");
+                dialogStage.initModality(Modality.APPLICATION_MODAL);
+                dialogStage.setScene(new Scene(root));
+                dialogStage.showAndWait();
 
-            Stage stage = new Stage();
-            stage.setTitle("Add Animal");
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
-
-            // refresh animal list after dialog closes
-            refreshViewLists();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
     }
+
 
 
     @FXML
     private void toAnimalManagePage() {
         Animal selected = animalsViewList.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            System.out.println("🔍 Manage animal: " + selected.getName());
-
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/prog/tierpark/view/animal-details.fxml"));
+                FXMLLoader loader = new FXMLLoader(Application.class.getResource("animal-view.fxml"));
                 Parent root = loader.load();
 
                 AnimalController controller = loader.getController();
                 controller.setAnimal(selected);
 
-                Stage stage = new Stage();
-                stage.setTitle("Animal Details");
-                stage.setScene(new Scene(root));
-                stage.show();
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Animal Details");
+                dialogStage.initModality(Modality.APPLICATION_MODAL);
+                dialogStage.setScene(new Scene(root));
+                dialogStage.showAndWait();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            System.out.println("⚠️ No animal selected.");
         }
     }
+
 
 
     @FXML
