@@ -5,10 +5,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Controller for creating a new enclosure within the zoo management system.
+ * Collects user input through a form and submits it to the repository.
+ */
 public class NewEnclosureController {
 
+    /** Repository for handling database operations related to enclosures. */
     private final EnclosureRepository enclosureRepository = new EnclosureRepository();
 
+    // === FXML UI input fields ===
     @FXML private TextField enclosureNameField;
     @FXML private TextField enclosureZoneField;
     @FXML private TextField enclosureStatusField;
@@ -18,11 +24,15 @@ public class NewEnclosureController {
     @FXML private TextField enclosureConditionField;
     @FXML private TextField enclosureAreaField;
 
+    /**
+     * Handles the creation of a new enclosure based on the input field values.
+     * Adds the new enclosure to the repository and closes the current window if successful.
+     */
     @FXML
     private void handleCreateNewEnclosure() {
         try {
             Enclosure enclosure = new Enclosure(
-                    0L,
+                    0L, // Temporary ID, assuming auto-increment in DB
                     enclosureNameField.getText(),
                     enclosureZoneField.getText(),
                     enclosureStatusField.getText(),
@@ -47,12 +57,20 @@ public class NewEnclosureController {
         }
     }
 
+    /**
+     * Placeholder method for navigating to the main menu.
+     * Extend this method to switch scenes if needed.
+     */
     @FXML
     private void toMainMenu() {
         System.out.println("🔁 Navigate to Main Menu");
         // TODO: scene switching if required
     }
 
+    /**
+     * Placeholder method for returning to the previous page.
+     * Extend this method to switch scenes if needed.
+     */
     @FXML
     private void goBack() {
         System.out.println("⬅️ Return to previous page");

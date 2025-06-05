@@ -9,12 +9,19 @@ import javafx.scene.control.*;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Controller class for managing animal food data within the zoo application.
+ * Supports viewing, creating, and updating food records via a JavaFX user interface.
+ */
 public class AnimalFoodController {
 
+    /** Currently selected food item from the list view. */
     private AnimalFood selectedFood;
 
+    /** Repository for accessing and modifying animal food data. */
     private final AnimalFoodRepository animalFoodRepository = new AnimalFoodRepository();
 
+    // === FXML-injected UI components ===
     @FXML private TextField foodNameField;
     @FXML private TextField foodAuantityField;
     @FXML private TextField foodWeightField;
@@ -22,6 +29,10 @@ public class AnimalFoodController {
     @FXML private DatePicker expirationDatePicker;
     @FXML private ListView<AnimalFood> foodStorageListView;
 
+    /**
+     * Initializes the controller. Loads food data into the list view and sets up
+     * a listener to populate form fields when a food item is selected.
+     */
     @FXML
     public void initialize() {
         refreshFoodList();
@@ -38,7 +49,10 @@ public class AnimalFoodController {
         });
     }
 
-
+    /**
+     * Handles the creation of a new food record using the form input.
+     * Adds the food to the repository and refreshes the list view.
+     */
     @FXML
     private void handeNewFood() {
         try {
@@ -64,11 +78,17 @@ public class AnimalFoodController {
         }
     }
 
+    /**
+     * Updates the list view with all food records from the repository.
+     */
     private void refreshFoodList() {
         List<AnimalFood> allFood = animalFoodRepository.getAllFood();
         foodStorageListView.getItems().setAll(allFood);
     }
 
+    /**
+     * Clears all form input fields and resets the date picker.
+     */
     private void clearForm() {
         foodNameField.clear();
         foodAuantityField.clear();
@@ -77,16 +97,26 @@ public class AnimalFoodController {
         expirationDatePicker.setValue(null);
     }
 
+    /**
+     * Navigates to the admin main menu scene.
+     */
     @FXML
     private void toMainMenu() {
         Application.switchScene("admin-menu-view.fxml");
     }
 
+    /**
+     * Navigates back to the enclosure menu scene.
+     */
     @FXML
     private void goBack() {
         Application.switchScene("enclosure-menu-view.fxml");
     }
 
+    /**
+     * Applies the changes made in the form to the selected food item.
+     * Updates the record in the repository and refreshes the view.
+     */
     @FXML
     private void handleApplyChanges() {
         if (selectedFood == null) {
@@ -100,7 +130,7 @@ public class AnimalFoodController {
             selectedFood.setWeight(Integer.parseInt(foodWeightField.getText()));
             selectedFood.setStorageCondition(conditionField.getText());
             selectedFood.setExpirationDate(expirationDatePicker.getValue());
-            selectedFood.setDeliveryDate(LocalDate.now()); // Optionally keep original
+            selectedFood.setDeliveryDate(LocalDate.now()); // Optionally set to current date
 
             boolean success = animalFoodRepository.updateFood(selectedFood);
             if (success) {
@@ -117,5 +147,4 @@ public class AnimalFoodController {
             e.printStackTrace();
         }
     }
-
 }

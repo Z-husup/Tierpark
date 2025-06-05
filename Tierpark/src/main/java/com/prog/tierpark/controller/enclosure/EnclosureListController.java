@@ -12,31 +12,29 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
+/**
+ * Controller for displaying a list of zoo enclosures and their basic information.
+ * Allows navigation to edit or view individual enclosures and return to the main menu.
+ */
 public class EnclosureListController {
 
+    /** Service class used to handle administrative actions such as opening the edit dialog. */
     private final AdminService adminService = new AdminService();
 
-    @FXML
-    private ListView<Enclosure> enclosureListView;
+    // === FXML UI components ===
+    @FXML private ListView<Enclosure> enclosureListView;
 
-    @FXML
-    private Text enclosureNameLabel;
+    @FXML private Text enclosureNameLabel;
+    @FXML private Text enclosureTypeLabel;
+    @FXML private Text enclosureStatusLabel;
+    @FXML private Text enclosureCapacityLabel;
+    @FXML private Text enclosureDescriptionLabel;
+    @FXML private Text enclosureConditionLabel;
 
-    @FXML
-    private Text enclosureTypeLabel;
-
-    @FXML
-    private Text enclosureStatusLabel;
-
-    @FXML
-    private Text enclosureCapacityLabel;
-
-    @FXML
-    private Text enclosureDescriptionLabel;
-
-    @FXML
-    private Text enclosureConditionLabel;
-
+    /**
+     * Initializes the controller. Loads all enclosures into the list view and sets up a selection listener.
+     * Automatically called by JavaFX after FXML components are injected.
+     */
     @FXML
     public void initialize() {
         EnclosureRepository repo = new EnclosureRepository(); // Or inject if needed
@@ -44,7 +42,7 @@ public class EnclosureListController {
 
         enclosureListView.getItems().addAll(enclosures);
 
-        // Set selection listener
+        // Listener for displaying selected enclosure details
         enclosureListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
                 showEnclosureDetails(newVal);
@@ -52,30 +50,38 @@ public class EnclosureListController {
         });
     }
 
-
+    /**
+     * Navigates to the main menu screen, depending on whether an admin or a worker is logged in.
+     */
     @FXML
     private void toMainMenu() {
         System.out.println("Navigating to Main Menu");
-        if (Session.getLoggedInWorker() != null){
+        if (Session.getLoggedInWorker() != null) {
             Application.switchScene("worker-menu-view.fxml");
-        }
-        else {
+        } else {
             Application.switchScene("admin-menu-view.fxml");
         }
     }
 
+    /**
+     * Returns to the previous page. Currently redirects to the main menu.
+     * Could be customized later to navigate to a specific previous view.
+     */
     @FXML
     private void goBack() {
         System.out.println("Going back to previous page");
         System.out.println("Navigating to Main Menu");
-        if (Session.getLoggedInWorker() != null){
+        if (Session.getLoggedInWorker() != null) {
             Application.switchScene("worker-menu-view.fxml");
-        }
-        else {
+        } else {
             Application.switchScene("admin-menu-view.fxml");
         }
     }
 
+    /**
+     * Opens the enclosure management page and allows editing the currently selected enclosure.
+     * Refreshes the list view after editing to reflect changes.
+     */
     @FXML
     private void toEnclosureManagePage() {
         System.out.println("Navigating to Enclosure Management Page");
@@ -86,9 +92,13 @@ public class EnclosureListController {
             adminService.openEditEnclosureDialog(selected);
             enclosureListView.refresh();
         }
-
     }
 
+    /**
+     * Displays detailed information about the selected enclosure in the UI text labels.
+     *
+     * @param enclosure the selected enclosure whose details should be shown
+     */
     private void showEnclosureDetails(Enclosure enclosure) {
         enclosureNameLabel.setText(enclosure.getName());
         enclosureTypeLabel.setText(enclosure.getType());
@@ -97,5 +107,4 @@ public class EnclosureListController {
         enclosureDescriptionLabel.setText(enclosure.getDescription());
         enclosureConditionLabel.setText(enclosure.getCondition());
     }
-
 }
