@@ -32,7 +32,7 @@ public class ScheduleRepository {
             while (rs.next()) {
                 list.add(new Schedule(
                         rs.getLong("id"),
-                        rs.getString("name"),
+                        rs.getString("description"),
                         ScheduleType.valueOf(rs.getString("scheduleType")),
                         rs.getDate("startingTime").toLocalDate().atStartOfDay()
                 ));

@@ -6,6 +6,7 @@ import com.prog.tierpark.controller.animal.AnimalController;
 import com.prog.tierpark.model.Animal;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Schedule;
+import com.prog.tierpark.repository.AnimalRepository;
 import com.prog.tierpark.repository.EnclosureRepository;
 import com.prog.tierpark.repository.ScheduleRepository;
 import javafx.fxml.FXML;
@@ -55,6 +56,8 @@ public class EditEnclosureController {
         enclosureCapacityField.setText(String.valueOf(enclosure.getCapacity()));
         enclosureDescriptionField.setText(enclosure.getDescription());
         enclosureConditionField.setText(enclosure.getCondition());
+
+        refreshViewLists();
     }
 
     @FXML
@@ -84,8 +87,9 @@ public class EditEnclosureController {
     private void refreshViewLists() {
         if (enclosure == null) return;
 
-        if (enclosure.getAnimals() != null) {
-            animalsViewList.getItems().setAll(enclosure.getAnimals());
+        if (enclosure.getId() != null) {
+            List<Animal> animals = new AnimalRepository().getAnimalsByEnclosureId(enclosure.getId());
+            animalsViewList.getItems().setAll(animals);
         } else {
             animalsViewList.getItems().clear();
         }

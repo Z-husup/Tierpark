@@ -44,8 +44,9 @@ public class EnclosureMenuController {
     private void refreshViewLists() {
         if (enclosure == null) return;
 
-        if (enclosure.getAnimals() != null) {
-            animalsViewList.getItems().setAll(enclosure.getAnimals());
+        if (enclosure.getId() != null) {
+            List<Animal> animals = new AnimalRepository().getAnimalsByEnclosureId(enclosure.getId());
+            animalsViewList.getItems().setAll(animals);
         } else {
             animalsViewList.getItems().clear();
         }
