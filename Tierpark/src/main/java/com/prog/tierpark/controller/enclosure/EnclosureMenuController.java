@@ -21,10 +21,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for the enclosure details menu.
+ * Displays details about a selected enclosure, including its animals and schedules.
+ * Allows users to add new schedules and navigate to animal detail views.
+ */
 public class EnclosureMenuController {
 
+    /** The currently selected enclosure being displayed. */
     private Enclosure enclosure;
 
+    // === FXML UI components ===
     @FXML private Text enclosureNameLabel;
     @FXML private Text enclosureTypeLabel;
     @FXML private Text enclosureStatusLabel;
@@ -35,6 +42,10 @@ public class EnclosureMenuController {
     @FXML private ListView<Schedule> scheduleViewList;
     @FXML private ListView<Animal> animalsViewList;
 
+    /**
+     * Called automatically by JavaFX after the FXML is loaded.
+     * Initializes the controller by setting the selected enclosure from the global SceneContext.
+     */
     @FXML
     public void initialize() {
         if (SceneContext.selectedEnclosure != null) {
@@ -42,6 +53,10 @@ public class EnclosureMenuController {
         }
     }
 
+    /**
+     * Refreshes the animal and schedule list views based on the current enclosure.
+     * Clears the views if the enclosure or its ID is null.
+     */
     private void refreshViewLists() {
         if (enclosure == null) return;
 
@@ -61,12 +76,14 @@ public class EnclosureMenuController {
     }
 
     /**
-     * Метод, вызываемый извне, чтобы передать в контроллер выбранный вольер.
+     * Called externally to inject the selected enclosure into this controller.
+     * Also sets the label values and populates animal/schedule lists.
+     *
+     * @param enclosure the enclosure to be displayed and managed
      */
     public void setEnclosure(Enclosure enclosure) {
         this.enclosure = enclosure;
 
-        // Установим значения текстовых полей
         enclosureNameLabel.setText(enclosure.getName());
         enclosureTypeLabel.setText(enclosure.getType());
         enclosureStatusLabel.setText(enclosure.getStatus());
@@ -74,33 +91,39 @@ public class EnclosureMenuController {
         enclosureDescriptionLabel.setText(enclosure.getDescription());
         enclosureConditionLabel.setText(enclosure.getCondition());
 
-        // Заполним списки
         refreshViewLists();
     }
 
+    /**
+     * Navigates the user to the appropriate main menu view based on login role (worker or admin).
+     */
     @FXML
     private void toMainMenu() {
         System.out.println("Navigating to Main Menu");
         if (Session.getLoggedInWorker() != null){
             Application.switchScene("worker-menu-view.fxml");
-        }
-        else {
+        } else {
             Application.switchScene("admin-menu-view.fxml");
         }
     }
 
+    /**
+     * Goes back to the previous page. Redirects workers to the enclosure list and admins to the admin menu.
+     */
     @FXML
     private void goBack() {
         System.out.println("Going back to previous page");
-        System.out.println("Navigating to Main Menu");
         if (Session.getLoggedInWorker() != null){
             Application.switchScene("enclosure-list-view.fxml");
-        }
-        else {
+        } else {
             Application.switchScene("admin-menu-view.fxml");
         }
     }
 
+    /**
+     * Opens a dialog window for creating a new schedule for this enclosure.
+     * Refreshes the schedule list after the dialog is closed.
+     */
     @FXML
     private void handleAddNewSchedule() {
         System.out.println("➕ Add new schedule to: " + enclosure.getName());
@@ -118,14 +141,17 @@ public class EnclosureMenuController {
             dialogStage.setScene(new Scene(root));
             dialogStage.showAndWait();
 
-            refreshViewLists(); // Refresh after the dialog closes
+            refreshViewLists();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
+    /**
+     * Deletes the currently selected schedule from the list and repository.
+     * Updates the schedule view list on success.
+     */
     @FXML
     private void handleScheduleDelete() {
         Schedule selected = scheduleViewList.getSelectionModel().getSelectedItem();
@@ -140,6 +166,9 @@ public class EnclosureMenuController {
         }
     }
 
+    /**
+     * Opens the detailed view dialog for the selected animal from the list.
+     */
     @FXML
     private void toAnimalManagePage() {
         Animal selected = animalsViewList.getSelectionModel().getSelectedItem();
@@ -164,6 +193,4 @@ public class EnclosureMenuController {
             System.out.println("⚠️ No animal selected.");
         }
     }
-
 }
-

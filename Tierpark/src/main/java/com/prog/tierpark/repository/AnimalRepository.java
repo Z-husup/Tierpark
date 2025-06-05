@@ -8,8 +8,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Repository class responsible for managing {@link Animal} data in the database.
+ * Provides methods to insert new animals and retrieve animals by enclosure ID.
+ */
 public class AnimalRepository {
 
+    /**
+     * Adds a new {@link Animal} to the database.
+     *
+     * @param animal the Animal object to be inserted
+     * @return true if insertion was successful, false otherwise
+     */
     public boolean addAnimal(Animal animal) {
         String sql = """
             INSERT INTO animal (name, animalGroup, dateOfBirth, arrivalDate, age, gender, size, weight, healthStatus, enclosure)
@@ -42,9 +52,16 @@ public class AnimalRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return false;
     }
 
+    /**
+     * Retrieves all {@link Animal} records that belong to a specific enclosure.
+     *
+     * @param enclosureId the ID of the enclosure to filter animals by
+     * @return a list of Animal objects assigned to the given enclosure
+     */
     public List<Animal> getAnimalsByEnclosureId(long enclosureId) {
         List<Animal> list = new ArrayList<>();
         String sql = "SELECT * FROM animal WHERE enclosure = ?";
@@ -67,8 +84,8 @@ public class AnimalRepository {
                         rs.getInt("size"),
                         rs.getInt("weight"),
                         HealthStatus.valueOf(rs.getString("healthStatus")),
-                        null, // optional: load MedicalHistory separately
-                        null  // optional: Enclosure already known
+                        null, // MedicalHistory can be loaded separately if needed
+                        null  // Enclosure already known from context
                 );
                 list.add(animal);
             }

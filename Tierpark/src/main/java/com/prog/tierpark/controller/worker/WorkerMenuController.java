@@ -56,7 +56,6 @@ public class WorkerMenuController {
     private void toFoodManagementPage() {
         System.out.println("Navigating to Food Management Page");
         Application.switchScene("food-management-view.fxml");
-        // TODO: Finish food management page
     }
 
     /**

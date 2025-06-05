@@ -21,13 +21,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller class for editing an enclosure's information, associated animals, and schedules.
+ * Allows the user to modify enclosure properties, add/remove schedules, and manage assigned animals.
+ */
 public class EditEnclosureController {
 
+    /** The enclosure being edited. */
     private Enclosure enclosure;
 
+    /** Repository for accessing and updating enclosure data. */
     private final EnclosureRepository enclosureRepository = new EnclosureRepository();
+
+    /** Repository for managing schedules assigned to enclosures. */
     private final ScheduleRepository scheduleRepository = new ScheduleRepository();
 
+    // === FXML UI components ===
     @FXML private TextField enclosureNameField;
     @FXML private TextField enclosureTypeField;
     @FXML private TextField enclosureStatusField;
@@ -38,14 +47,19 @@ public class EditEnclosureController {
     @FXML private ListView<Schedule> scheduleViewList;
     @FXML private ListView<Animal> animalsViewList;
 
-
+    /**
+     * Initializes the view after FXML loading.
+     * Loads associated animals and schedules into the list views.
+     */
     @FXML
     private void initialize() {
         refreshViewLists();
     }
 
     /**
-     * Called externally to inject the Enclosure to be edited.
+     * Sets the enclosure to be edited and populates the form fields with its data.
+     *
+     * @param enclosure the enclosure to be edited
      */
     public void setEnclosure(Enclosure enclosure) {
         this.enclosure = enclosure;
@@ -60,6 +74,10 @@ public class EditEnclosureController {
         refreshViewLists();
     }
 
+    /**
+     * Opens a dialog to create a new schedule assigned to this enclosure.
+     * Refreshes the schedule list view after the dialog is closed.
+     */
     @FXML
     private void handleAddNewSchedule() {
         System.out.println("➕ Add new schedule to: " + enclosure.getName());
@@ -77,13 +95,16 @@ public class EditEnclosureController {
             dialogStage.setScene(new Scene(root));
             dialogStage.showAndWait();
 
-            refreshViewLists(); // Refresh after the dialog closes
-
+            refreshViewLists();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Refreshes both the schedule and animal lists based on the current enclosure.
+     * Clears the lists if no enclosure is set or ID is null.
+     */
     private void refreshViewLists() {
         if (enclosure == null) return;
 
@@ -95,14 +116,17 @@ public class EditEnclosureController {
         }
 
         if (enclosure.getId() != null) {
-            List<Schedule> schedules = new ScheduleRepository().getSchedulesByEnclosureId(enclosure.getId());
+            List<Schedule> schedules = scheduleRepository.getSchedulesByEnclosureId(enclosure.getId());
             scheduleViewList.getItems().setAll(schedules);
         } else {
             scheduleViewList.getItems().clear();
         }
     }
 
-
+    /**
+     * Deletes the currently selected schedule from the list and repository.
+     * Updates the view if deletion was successful.
+     */
     @FXML
     private void handleScheduleDelete() {
         Schedule selected = scheduleViewList.getSelectionModel().getSelectedItem();
@@ -117,27 +141,32 @@ public class EditEnclosureController {
         }
     }
 
+    /**
+     * Opens the new animal creation dialog.
+     * The created animal will later be manually assigned to an enclosure.
+     */
     @FXML
     private void handleNewAnimal() {
-            try {
-                FXMLLoader loader = new FXMLLoader(Application.class.getResource("new-animal-view.fxml"));
-                Parent root = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(Application.class.getResource("new-animal-view.fxml"));
+            Parent root = loader.load();
 
-                NewAnimalController controller = loader.getController();
+            NewAnimalController controller = loader.getController();
+            controller.setEnclosure(enclosure);
 
-                Stage dialogStage = new Stage();
-                dialogStage.setTitle("Animal Details");
-                dialogStage.initModality(Modality.APPLICATION_MODAL);
-                dialogStage.setScene(new Scene(root));
-                dialogStage.showAndWait();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Animal Details");
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            dialogStage.setScene(new Scene(root));
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-
-
+    /**
+     * Opens the detailed view of the selected animal in a modal dialog.
+     */
     @FXML
     private void toAnimalManagePage() {
         Animal selected = animalsViewList.getSelectionModel().getSelectedItem();
@@ -154,7 +183,6 @@ public class EditEnclosureController {
                 dialogStage.initModality(Modality.APPLICATION_MODAL);
                 dialogStage.setScene(new Scene(root));
                 dialogStage.showAndWait();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -163,23 +191,27 @@ public class EditEnclosureController {
         }
     }
 
-
-
+    /**
+     * Placeholder method to return to the main menu. Can be extended to change scenes.
+     */
     @FXML
     private void toMainMenu() {
         System.out.println("🔁 Return to main menu");
         // TODO: switch scene if needed
     }
 
+    /**
+     * Closes the current window and returns to the previous view.
+     */
     @FXML
     private void goBack() {
         Stage stage = (Stage) enclosureNameField.getScene().getWindow();
         stage.close();
     }
 
-
     /**
-     * Saves the edited enclosure values back to the database.
+     * Saves the updated enclosure details from the form into the database.
+     * Closes the dialog window upon successful update.
      */
     @FXML
     private void handleSave() {

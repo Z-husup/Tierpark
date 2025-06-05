@@ -17,8 +17,11 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.InputStream;
-import java.time.LocalDate;
 
+/**
+ * Controller class for managing the details of an animal in the UI.
+ * Allows viewing and editing of animal properties and associated medical history.
+ */
 public class AnimalController {
 
     private Animal animal;
@@ -39,12 +42,21 @@ public class AnimalController {
 
     private boolean editingMode = false;
 
+    /**
+     * Sets the current animal and populates the fields in the view.
+     *
+     * @param animal the animal to display and potentially edit
+     */
     public void setAnimal(Animal animal) {
         this.animal = animal;
         populateFields();
         updateImage();
     }
 
+    /**
+     * Initializes the combo boxes with values and sets up the UI components.
+     * Called automatically by the JavaFX framework after the FXML elements are loaded.
+     */
     @FXML
     public void initialize() {
         animalGroupCombo.getItems().addAll(AnimalGroup.values());
@@ -53,6 +65,9 @@ public class AnimalController {
         enclosureCombo.getItems().addAll(new EnclosureRepository().getAllEnclosures());
     }
 
+    /**
+     * Fills all UI fields with the current animal's data, loads medical history and image.
+     */
     private void populateFields() {
         if (animal == null) return;
 
@@ -76,13 +91,11 @@ public class AnimalController {
                 } else {
                     System.err.println("❌ Image not found at: " + imgPath);
                 }
-
             } catch (Exception e) {
                 System.out.println("⚠️ Image not found for group: " + animal.getAnimalGroup());
             }
         }
 
-        // Load medical history if available
         if (animal.getId() != null) {
             medicalRecordsListView.getItems().setAll(
                     new MedicalHistoryRepository().getMedicalRecordsByAnimalId(animal.getId())
@@ -90,6 +103,10 @@ public class AnimalController {
         }
     }
 
+    /**
+     * Handles toggling of edit mode. Enables or disables form fields accordingly.
+     * Saves the changes if edit mode is turned off.
+     */
     @FXML
     private void handleEditAnimal() {
         editingMode = !editingMode;
@@ -106,12 +123,15 @@ public class AnimalController {
 
         editAnimalButton.setDisable(false);
 
-
         if (!editingMode) {
             saveAnimalChanges();
         }
     }
 
+    /**
+     * Saves the updated values from the UI into the current animal object.
+     * Shows an alert in case of validation errors.
+     */
     private void saveAnimalChanges() {
         try {
             animal.setName(animalNameField.getText());
@@ -126,7 +146,7 @@ public class AnimalController {
 
             System.out.println("✅ Animal updated: " + animal.getName());
 
-            // Optional: save to DB if needed
+            // Optional: persist the animal changes to the database here
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -134,6 +154,10 @@ public class AnimalController {
         }
     }
 
+    /**
+     * Handles the action to add a medical record for the current animal.
+     * Currently only logs the action; can be expanded to open a dialog.
+     */
     @FXML
     private void handleAddMedicalRecord() {
         if (animal != null && animal.getId() != null) {
@@ -142,23 +166,34 @@ public class AnimalController {
         }
     }
 
+    /**
+     * Navigates the user to the main menu, depending on the logged-in worker or admin.
+     */
     @FXML
     private void toMainMenu() {
         System.out.println("Navigating to Main Menu");
         if (Session.getLoggedInWorker() != null){
             Application.switchScene("worker-menu-view.fxml");
-        }
-        else {
+        } else {
             Application.switchScene("admin-menu-view.fxml");
         }
     }
 
+    /**
+     * Closes the current window and returns to the previous screen.
+     */
     @FXML
     private void goBack() {
         Stage stage = (Stage) animalNameField.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Displays an alert box with the given title and message content.
+     *
+     * @param title   the title of the alert dialog
+     * @param content the message body of the alert
+     */
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
@@ -167,6 +202,9 @@ public class AnimalController {
         alert.showAndWait();
     }
 
+    /**
+     * Updates the image view based on the selected animal group from the combo box.
+     */
     @FXML
     private void updateImage() {
         animalGroupImage.setImage(null);
