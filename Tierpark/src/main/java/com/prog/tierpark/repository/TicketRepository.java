@@ -22,7 +22,27 @@ public class TicketRepository {
      */
     public List<Ticket> getAllTickets() {
         List<Ticket> tickets = new ArrayList<>();
-        // TODO: Implementierung zum Abrufen aller Tickets aus der DB hinzufügen
+        String sql = "SELECT * FROM ticket";
+
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                Ticket ticket = new Ticket(
+                        rs.getLong("id"),
+                        TicketType.valueOf(rs.getString("type")),
+                        rs.getDate("theDate"),
+                        rs.getDouble("price"),
+                        TicketStatus.valueOf(rs.getString("status"))
+                );
+                tickets.add(ticket);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return tickets;
     }
 
@@ -104,5 +124,29 @@ public class TicketRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Ticket> getTicketsByDateRange(Date start, Date end) {
+        List<Ticket> tickets = new ArrayList<>();
+        String sql = "SELECT * FROM ticket WHERE theDate BETWEEN ? AND ?";
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setDate(1, start);
+            pstmt.setDate(2, end);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Ticket ticket = new Ticket(
+                        rs.getLong("id"),
+                        TicketType.valueOf(rs.getString("type")),
+                        rs.getDate("theDate"),
+                        rs.getDouble("price"),
+                        TicketStatus.valueOf(rs.getString("status"))
+                );
+                tickets.add(ticket);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tickets;
     }
 }

@@ -111,4 +111,9 @@ public class TicketController {
     private void goToStartPage(ActionEvent event) {
         Application.switchScene("start-view.fxml");
     }
+
+    @FXML
+    private void goToAdminPage(ActionEvent event) {
+        Application.switchScene("ticket-admin-view.fxml");
+    }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450" prefWidth="600" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.TicketAdminController">
+
+    <children>
+        <Label layoutX="20" layoutY="20" style="-fx-font-size: 20px;" text="All Tickets" />
+
+        <TableView fx:id="ticketTable" layoutX="20" layoutY="60" prefHeight="300" prefWidth="560">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="50" text="ID" />
+                <TableColumn fx:id="typeColumn" prefWidth="100" text="Type" />
+                <TableColumn fx:id="dateColumn" prefWidth="120" text="Date" />
+                <TableColumn fx:id="priceColumn" prefWidth="100" text="Price" />
+                <TableColumn fx:id="statusColumn" prefWidth="100" text="Status" />
+            </columns>
+        </TableView>
+
+        <Label layoutX="20" layoutY="370" text="Filter by Date:" />
+        <DatePicker fx:id="startDatePicker" layoutX="120" layoutY="365" />
+        <DatePicker fx:id="endDatePicker" layoutX="380" layoutY="365" />
+      <Text layoutX="128.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start" />
+      <Text layoutX="380.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End" />
+        <Button layoutX="536.0" layoutY="407.0" onAction="#handleDateFilter" text="Filter" />
+    </children>
+</AnchorPane>

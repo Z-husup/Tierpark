@@ -1,5 +1,6 @@
 package com.prog.tierpark.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.prog.tierpark.model.Ticket;
@@ -64,5 +65,9 @@ public class TicketService {
         updatedTicket.setStatus(ticket.getStatus());
         updatedTicket.setType(ticket.getType());
         ticketRepository.updateTicket(updatedTicket);
+    }
+
+    public List<Ticket> getTicketsBetweenDates(Date start, Date end) {
+        return ticketRepository.getTicketsByDateRange(start, end);
     }
 }

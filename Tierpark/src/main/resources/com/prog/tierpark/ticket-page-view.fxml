@@ -39,5 +39,6 @@
 
       <Label fx:id="statusLabel" layoutX="32.0" layoutY="350.0" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="Welcome to the ticket system!" />
       <Button layoutX="32.0" layoutY="405.0" mnemonicParsing="false" onAction="#goToStartPage" text="Start page" />
+      <Button layoutX="150.0" layoutY="405.0" mnemonicParsing="false" onAction="#goToAdminPage" text="Admin page" />
    </children>
 </AnchorPane>
