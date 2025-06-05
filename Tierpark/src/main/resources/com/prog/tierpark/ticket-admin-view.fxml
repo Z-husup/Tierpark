@@ -25,5 +25,8 @@
       <Text layoutX="128.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start" />
       <Text layoutX="380.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End" />
         <Button layoutX="536.0" layoutY="407.0" onAction="#handleDateFilter" text="Filter" />
+        <Label fx:id="revenueLabel" layoutX="20" layoutY="420" text="Gesamteinnahmen: 0.00 €" />
+        <Button layoutX="499.0" layoutY="20.0" onAction="#goToStartPage" text="Start Page" />
+
     </children>
 </AnchorPane>

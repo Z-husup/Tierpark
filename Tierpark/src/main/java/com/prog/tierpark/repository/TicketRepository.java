@@ -18,7 +18,7 @@ public class TicketRepository {
     /**
      * Liefert eine Liste aller Tickets aus der Datenbank zurück.
      *
-     * @return Liste aller Tickets (aktuell leer, Implementierung fehlt)
+     * @return Liste aller gespeicherten Tickets
      */
     public List<Ticket> getAllTickets() {
         List<Ticket> tickets = new ArrayList<>();
@@ -56,34 +56,40 @@ public class TicketRepository {
         String sql = "SELECT * FROM ticket WHERE id = ?";
         try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setLong(1, id);
             var rs = pstmt.executeQuery();
+
             if (rs.next()) {
                 return new Ticket(
                         rs.getLong("id"),
                         TicketType.valueOf(rs.getString("type")),
-                        rs.getDate("theDAte"),
+                        rs.getDate("theDate"),
                         rs.getDouble("price"),
                         TicketStatus.valueOf(rs.getString("status"))
                 );
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
     /**
      * Speichert ein neues Ticket in der Datenbank.
-     * Setzt die generierte ID im Ticket-Objekt nach erfolgreichem Speichern.
+     * Nach erfolgreichem Speichern wird die generierte ID im übergebenen Ticket-Objekt gesetzt.
      *
      * @param ticket Das Ticket, das gespeichert werden soll
-     * @return Das gespeicherte Ticket mit der gesetzten ID oder null bei Fehlern
+     * @return Das gespeicherte Ticket mit gesetzter ID oder null bei Fehler
      */
     public Ticket saveTicket(Ticket ticket) {
         String sql = "INSERT INTO ticket (type, theDate, price, status) VALUES (?, ?, ?, ?)";
+
         try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
             pstmt.setString(1, ticket.getType().name());
             pstmt.setDate(2, new java.sql.Date(ticket.getDay().getTime()));
             pstmt.setDouble(3, ticket.getPrice());
@@ -99,41 +105,55 @@ public class TicketRepository {
                     throw new SQLException("Speichern des Tickets fehlgeschlagen: keine ID erhalten.");
                 }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
     /**
      * Aktualisiert ein bestehendes Ticket in der Datenbank.
-     * Aktuelle Implementierung fehlt.
      *
      * @param ticket Das Ticket mit aktualisierten Werten
      */
     public void updateTicket(Ticket ticket) {
         String sql = "UPDATE ticket SET type = ?, theDate = ?, price = ?, status = ? WHERE id = ?";
+
         try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, ticket.getType().name());
             pstmt.setDate(2, new java.sql.Date(ticket.getDay().getTime()));
             pstmt.setDouble(3, ticket.getPrice());
             pstmt.setString(4, ticket.getStatus().name());
             pstmt.setLong(5, ticket.getId());
             pstmt.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Gibt eine Liste aller Tickets zurück, deren Kaufdatum im angegebenen Bereich liegt.
+     *
+     * @param start Startdatum (inklusive)
+     * @param end   Enddatum (inklusive)
+     * @return Liste der Tickets innerhalb des Datumsbereichs
+     */
     public List<Ticket> getTicketsByDateRange(Date start, Date end) {
         List<Ticket> tickets = new ArrayList<>();
         String sql = "SELECT * FROM ticket WHERE theDate BETWEEN ? AND ?";
+
         try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setDate(1, start);
             pstmt.setDate(2, end);
             ResultSet rs = pstmt.executeQuery();
+
             while (rs.next()) {
                 Ticket ticket = new Ticket(
                         rs.getLong("id"),
@@ -144,9 +164,11 @@ public class TicketRepository {
                 );
                 tickets.add(ticket);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return tickets;
     }
 }

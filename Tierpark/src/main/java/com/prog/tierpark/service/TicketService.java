@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.prog.tierpark.model.Ticket;
+import com.prog.tierpark.model.enums.TicketStatus;
 import com.prog.tierpark.repository.TicketRepository;
 
 /**
@@ -55,6 +56,7 @@ public class TicketService {
 
     /**
      * Aktualisiert ein bestehendes Ticket in der Datenbank.
+     * Es wird nach der ID gesucht, und die relevanten Felder werden überschrieben.
      *
      * @param ticket Das Ticket mit den aktualisierten Daten
      */
@@ -67,7 +69,29 @@ public class TicketService {
         ticketRepository.updateTicket(updatedTicket);
     }
 
+    /**
+     * Gibt eine Liste aller Tickets zurück, deren Kaufdatum
+     * innerhalb des angegebenen Datumsbereichs liegt (einschließlich).
+     *
+     * @param start Startdatum (inklusive)
+     * @param end   Enddatum (inklusive)
+     * @return Eine Liste gefilterter Tickets nach Datum
+     */
     public List<Ticket> getTicketsBetweenDates(Date start, Date end) {
         return ticketRepository.getTicketsByDateRange(start, end);
+    }
+
+    /**
+     * Berechnet die Gesamteinnahmen aus einer Liste von Tickets,
+     * wobei Tickets mit dem Status "refunded" ausgeschlossen werden.
+     *
+     * @param tickets Liste der zu analysierenden Tickets
+     * @return Gesamtsumme der Preise nicht zurückerstatteter Tickets
+     */
+    public double getTotalRevenueExcludingRefunded(List<Ticket> tickets) {
+        return tickets.stream()
+                .filter(ticket -> ticket.getStatus() != TicketStatus.refunded)
+                .mapToDouble(Ticket::getPrice)
+                .sum();
     }
 }
