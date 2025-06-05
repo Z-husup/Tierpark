@@ -1,8 +1,7 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.enclosure;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.repository.EnclosureRepository;
 import javafx.fxml.FXML;
-import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 

@@ -1,6 +1,7 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.admin;
 
 import com.prog.tierpark.Application;
+import com.prog.tierpark.SceneContext;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.service.AdminService;
@@ -111,7 +112,11 @@ public class AdminMenuController {
      */
     @FXML
     private void toManageEnclosure() {
-        Application.switchScene("enclosure-menu-view.fxml");
+        Enclosure selected = enclosureListView.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            SceneContext.selectedEnclosure = selected;
+            Application.switchScene("enclosure-menu-view.fxml");
+        }
     }
 
     /**

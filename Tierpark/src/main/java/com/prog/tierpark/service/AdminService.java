@@ -1,8 +1,8 @@
 package com.prog.tierpark.service;
 
 import com.prog.tierpark.Application;
-import com.prog.tierpark.controller.EditEnclosureController;
-import com.prog.tierpark.controller.EditWorkerController;
+import com.prog.tierpark.controller.enclosure.EditEnclosureController;
+import com.prog.tierpark.controller.worker.EditWorkerController;
 import com.prog.tierpark.model.Admin;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Worker;

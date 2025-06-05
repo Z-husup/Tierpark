@@ -5,23 +5,6 @@ CREATE TABLE admin (
                        password VARCHAR(255)
 );
 
--- Table for Species
-CREATE TABLE species (
-                         id BIGINT IDENTITY(1,1) PRIMARY KEY,
-                         name VARCHAR(255),
-                         habitat VARCHAR(255),
-                         animalClass VARCHAR(255),
-                         diet VARCHAR(255)
-);
-
--- Table for AnimalStatus
-CREATE TABLE animalstatus (
-                              id BIGINT IDENTITY(1,1) PRIMARY KEY,
-                              healthStatus VARCHAR(255),
-                              breedingStatus VARCHAR(255),
-                              isDead VARCHAR(255)
-);
-
 -- Table for Enclosure
 CREATE TABLE enclosure (
                            id BIGINT IDENTITY(1,1) PRIMARY KEY,
@@ -39,17 +22,15 @@ CREATE TABLE enclosure (
 CREATE TABLE animal (
                         id BIGINT IDENTITY(1,1) PRIMARY KEY,
                         name VARCHAR(255),
-                        species BIGINT,
+                        animalGroup VARCHAR(255),
                         dateOfBirth DATE,
                         arrivalDate DATE,
                         age INT,
                         gender VARCHAR(255),
                         size INT,
                         weight INT,
-                        status BIGINT,
+                        healthStatus VARCHAR(255),
                         enclosure BIGINT,
-                        FOREIGN KEY (species) REFERENCES species(id),
-                        FOREIGN KEY (status) REFERENCES animalstatus(id),
                         FOREIGN KEY (enclosure) REFERENCES enclosure(id)
 );
 
@@ -57,17 +38,18 @@ CREATE TABLE animal (
 CREATE TABLE animalfood (
                             id BIGINT IDENTITY(1,1) PRIMARY KEY,
                             name VARCHAR(255),
+                            quantity INTEGER,
                             weight INT,
                             deliveryDate DATE,
                             expirationDate DATE,
-                            storageCondition VARCHAR(255),
-                            quantity INTEGER
+                            storageCondition VARCHAR(255)
 );
 
 -- Table for MedicalHistory
 CREATE TABLE medicalhistory (
                                 id BIGINT IDENTITY(1,1) PRIMARY KEY,
                                 animalId BIGINT,
+                                date DATE,
                                 description VARCHAR(255),
                                 FOREIGN KEY (animalId) REFERENCES animal(id)
 );

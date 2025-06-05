@@ -1,10 +1,6 @@
 package com.prog.tierpark.repository;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,6 +66,44 @@ public class ScheduleRepository {
 
         return false;
     }
+
+    /**
+     * Inserts a new schedule into the database for the given enclosure.
+     *
+     * @param schedule    The {@link Schedule} object to insert.
+     * @param enclosureId The ID of the enclosure to associate the schedule with.
+     * @return {@code true} if the insert was successful, {@code false} otherwise.
+     */
+    public boolean addSchedule(Schedule schedule, long enclosureId) {
+        String sql = """
+        INSERT INTO schedule (description, scheduleType, startingTime, enclosure)
+        VALUES (?, ?, ?, ?)
+    """;
+
+        try (Connection conn = DriverManager.getConnection(DatabaseManager.URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            pstmt.setString(1, schedule.getDescription());
+            pstmt.setString(2, schedule.getScheduleType().name());
+            pstmt.setTimestamp(3, java.sql.Timestamp.valueOf(schedule.getStartingTime()));
+            pstmt.setLong(4, enclosureId);
+
+            int affected = pstmt.executeUpdate();
+            if (affected > 0) {
+                ResultSet keys = pstmt.getGeneratedKeys();
+                if (keys.next()) {
+                    schedule.setId(keys.getLong(1)); // optional: store generated ID
+                }
+                return true;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 
 }
 

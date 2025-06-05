@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.AdminMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="1104.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.admin.AdminMenuController">
    <children>
       <ListView fx:id="enclosureListView" layoutX="14.0" layoutY="201.0" prefHeight="589.0" prefWidth="683.0" />
       <ListView fx:id="workerListView" layoutX="728.0" layoutY="239.0" prefHeight="547.0" prefWidth="361.0" />

@@ -1,9 +1,11 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.worker;
 
 import java.util.List;
 
 import com.prog.tierpark.Application;
+import com.prog.tierpark.SceneContext;
 import com.prog.tierpark.Session;
+import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Schedule;
 import com.prog.tierpark.model.Worker;
 import com.prog.tierpark.repository.ScheduleRepository;
@@ -16,6 +18,8 @@ import javafx.scene.text.Text;
  * Controller for the Worker menu view, displaying worker info and navigation.
  */
 public class WorkerMenuController {
+
+    private static Worker worker = Session.getLoggedInWorker();
 
     @FXML private ListView scheduleViewList;
     @FXML private Text workerUsernameLabel;
@@ -61,8 +65,8 @@ public class WorkerMenuController {
     @FXML
     private void toEnclosureManagementPage() {
         System.out.println("Navigating to Enclosure Management Page");
-        Application.switchScene("enclosure-management-view.fxml");
-        // TODO: Finish enclosure management page
+        SceneContext.selectedEnclosure = worker.getEnclosure();
+        Application.switchScene("enclosure-menu-view.fxml");
     }
 
     /**

@@ -1,5 +1,8 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.enclosure;
 
+import com.prog.tierpark.Application;
+import com.prog.tierpark.controller.animal.NewAnimalController;
+import com.prog.tierpark.controller.animal.AnimalController;
 import com.prog.tierpark.model.Animal;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.model.Schedule;
@@ -11,7 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,8 +59,26 @@ public class EditEnclosureController {
 
     @FXML
     private void handleAddNewSchedule() {
-        System.out.println("➕ Add new schedule for: " + enclosure.getName());
-        // TODO: open schedule creation dialog, then refresh scheduleViewList
+        System.out.println("➕ Add new schedule to: " + enclosure.getName());
+
+        try {
+            FXMLLoader loader = new FXMLLoader(Application.class.getResource("/com/prog/tierpark/new-schedule-view.fxml"));
+            Parent root = loader.load();
+
+            NewScheduleController controller = loader.getController();
+            controller.setEnclosure(enclosure);
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Create New Schedule");
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            dialogStage.setScene(new Scene(root));
+            dialogStage.showAndWait();
+
+            refreshViewLists(); // Refresh after the dialog closes
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void refreshViewLists() {

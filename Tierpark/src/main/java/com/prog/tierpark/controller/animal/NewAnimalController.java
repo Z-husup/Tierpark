@@ -1,8 +1,9 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.animal;
 
 import com.prog.tierpark.model.Enclosure;
 
 public class NewAnimalController {
+
     private Enclosure enclosure;
 
     public void setEnclosure(Enclosure enclosure) {

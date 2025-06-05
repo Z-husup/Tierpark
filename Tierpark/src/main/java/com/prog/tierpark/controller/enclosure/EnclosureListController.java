@@ -1,4 +1,4 @@
-package com.prog.tierpark.controller;
+package com.prog.tierpark.controller.enclosure;
 
 import java.util.List;
 
@@ -7,11 +7,14 @@ import com.prog.tierpark.Session;
 import com.prog.tierpark.model.Enclosure;
 import com.prog.tierpark.repository.EnclosureRepository;
 
+import com.prog.tierpark.service.AdminService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 
 public class EnclosureListController {
+
+    private final AdminService adminService = new AdminService();
 
     @FXML
     private ListView<Enclosure> enclosureListView;
@@ -78,7 +81,11 @@ public class EnclosureListController {
         System.out.println("Navigating to Enclosure Management Page");
         Application.switchScene("enclosure-management-view.fxml");
 
-        //TODO: Finish enclosure management page
+        Enclosure selected = enclosureListView.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            adminService.openEditEnclosureDialog(selected);
+            enclosureListView.refresh();
+        }
 
     }
 
