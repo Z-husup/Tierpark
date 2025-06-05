@@ -59,6 +59,7 @@ INSERT INTO medicalhistory (animalId, date, description) VALUES
     (10, '2025-04-11', 'Eye infection treated');
 
 -- Schedule
+-- Schedule (×3)
 INSERT INTO schedule (description, scheduleType, startingTime, enclosure) VALUES
     ('Morning Feeding', 'FEEDING', '2025-06-01', 1),
     ('Cleaning Shift', 'ENCLOSURE_CLEANING', '2025-06-01', 2),
@@ -69,11 +70,34 @@ INSERT INTO schedule (description, scheduleType, startingTime, enclosure) VALUES
     ('Feeding Time', 'FEEDING', '2025-06-02', 7),
     ('Habitat Inspection', 'ENCLOSURE_CLEANING', '2025-06-05', 8),
     ('Medical Checkup', 'TREATMENT', '2025-06-04', 9),
-    ('Deep Cleaning', 'ENCLOSURE_CLEANING', '2025-06-06', 10);
+    ('Deep Cleaning', 'ENCLOSURE_CLEANING', '2025-06-06', 10),
+
+    ('Morning Feeding 2', 'FEEDING', '2025-06-07', 1),
+    ('Cleaning Shift 2', 'ENCLOSURE_CLEANING', '2025-06-07', 2),
+    ('Vet Check 2', 'TREATMENT', '2025-06-08', 3),
+    ('Evening Feeding 2', 'FEEDING', '2025-06-07', 4),
+    ('Medical Treatment 2', 'TREATMENT', '2025-06-09', 5),
+    ('Water Refill', 'FEEDING', '2025-06-10', 6),
+    ('Supplement Feeding', 'FEEDING', '2025-06-08', 7),
+    ('Enclosure Sanitization', 'ENCLOSURE_CLEANING', '2025-06-09', 8),
+    ('Routine Checkup', 'TREATMENT', '2025-06-10', 9),
+    ('General Maintenance', 'ENCLOSURE_CLEANING', '2025-06-11', 10),
+
+    ('Morning Feeding 3', 'FEEDING', '2025-06-12', 1),
+    ('Cleaning Shift 3', 'ENCLOSURE_CLEANING', '2025-06-12', 2),
+    ('Vet Check 3', 'TREATMENT', '2025-06-13', 3),
+    ('Evening Feeding 3', 'FEEDING', '2025-06-12', 4),
+    ('Medical Treatment 3', 'TREATMENT', '2025-06-14', 5),
+    ('Filter Check', 'FEEDING', '2025-06-15', 6),
+    ('Protein Feeding', 'FEEDING', '2025-06-13', 7),
+    ('Glass Cleaning', 'ENCLOSURE_CLEANING', '2025-06-14', 8),
+    ('Vaccination Prep', 'TREATMENT', '2025-06-15', 9),
+    ('Barrier Inspection', 'ENCLOSURE_CLEANING', '2025-06-16', 10);
+
 
 -- Worker
 INSERT INTO worker (username, password, fullName, email, phoneNumber, dateOfBirth, gender, hireDate, status, salary, specialization, enclosure) VALUES
-    ('worker1', 'pass1', 'Dr. Alex Reinhart', 'alex.reinhart@zoo.com', '01771234567', '1984-03-21', 'MALE', '2016-05-01', 'WORKING', 4200, 'MEDICAL_ASSISTANCE', 2),
+    ('worker1', 'pass1', 'Zhusup Akylbek Aziz', 'zaz@zoo.com', '01771234567', '1984-03-21', 'MALE', '2016-05-01', 'WORKING', 4200, 'MEDICAL_ASSISTANCE', 2),
     ('worker2', 'pass2', 'Lara Schmidt', 'lara.schmidt@zoo.com', '01779887766', '1990-07-14', 'FEMALE', '2021-02-10', 'WORKING', 2600, 'SUPERVISION', 1),
     ('worker3', 'pass3', 'Boris Ivanov', 'boris.ivanov@zoo.com', '01774563211', '1988-11-02', 'MALE', '2019-09-01', 'VACATION', 2500, 'SUPERVISION', 3),
     ('worker4', 'pass4', 'Julia Becker', 'julia.becker@zoo.com', '01776543210', '1982-01-17', 'FEMALE', '2015-01-01', 'WORKING', 3800, 'MEDICAL_ASSISTANCE', 5),

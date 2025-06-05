@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.EnclosureMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="1076.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.EnclosureMenuController">
    <children>
       <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gehäuse:">
          <font>
@@ -18,7 +18,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="animalButton" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#toAnimalManagePage" prefHeight="25.0" prefWidth="273.0" text="Tier page" />
+      <Button fx:id="animalButton" layoutX="14.0" layoutY="699.0" mnemonicParsing="false" onAction="#toAnimalManagePage" prefHeight="25.0" prefWidth="515.0" text="zu Tier page" />
       <Text layoutX="14.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
          <font>
             <Font size="14.0" />
@@ -70,15 +70,15 @@
          </font>
       </Text>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Hauptmenü" />
-      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Zurück" />
-      <ListView fx:id="scheduleViewList" layoutX="321.0" layoutY="85.0" prefHeight="258.0" prefWidth="275.0" />
-      <Text layoutX="321.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aktueller Zeitplan für das Gehäuse:" wrappingWidth="135.65499877929688">
+      <Button layoutX="972.0" layoutY="18.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Zurück" />
+      <ListView fx:id="scheduleViewList" layoutX="554.0" layoutY="115.0" prefHeight="565.0" prefWidth="504.0" />
+      <Text layoutX="554.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aktueller Zeitplan für das Gehäuse:" wrappingWidth="135.65499877929688">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <ListView fx:id="animalsViewList" layoutX="13.0" layoutY="251.0" prefHeight="101.0" prefWidth="275.0" />
-      <Button layoutX="321.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleAddNewSchedule" prefHeight="25.0" prefWidth="164.0" text="Hinzufügen" />
-      <Button layoutX="496.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleScheduleDelete" prefHeight="25.0" prefWidth="101.0" text="Löschen" />
+      <ListView fx:id="animalsViewList" layoutX="13.0" layoutY="251.0" prefHeight="419.0" prefWidth="515.0" />
+      <Button layoutX="554.0" layoutY="699.0" mnemonicParsing="false" onAction="#handleAddNewSchedule" prefHeight="25.0" prefWidth="380.0" text="Hinzufügen" />
+      <Button layoutX="956.0" layoutY="699.0" mnemonicParsing="false" onAction="#handleScheduleDelete" prefHeight="25.0" prefWidth="101.0" text="Löschen" />
    </children>
 </AnchorPane>

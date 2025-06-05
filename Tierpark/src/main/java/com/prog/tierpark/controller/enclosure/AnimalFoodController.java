@@ -102,7 +102,7 @@ public class AnimalFoodController {
      */
     @FXML
     private void toMainMenu() {
-        Application.switchScene("admin-menu-view.fxml");
+        Application.switchScene("worker-menu-view.fxml");
     }
 
     /**
@@ -110,7 +110,7 @@ public class AnimalFoodController {
      */
     @FXML
     private void goBack() {
-        Application.switchScene("enclosure-menu-view.fxml");
+        Application.switchScene("worker-menu-view.fxml");
     }
 
     /**
