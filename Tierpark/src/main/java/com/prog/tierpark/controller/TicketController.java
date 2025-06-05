@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import com.prog.tierpark.model.Ticket;
+import com.prog.tierpark.model.enums.TicketStatus;
 import com.prog.tierpark.model.enums.TicketType;
 import com.prog.tierpark.service.TicketService;
 
@@ -98,8 +99,10 @@ public class TicketController {
             statusLabel.setText("Bitte gültige Ticket-ID eingeben.");
             return;
         }
-
-        // Hier sollte die Refund-Logik implementiert werden.
+        Ticket newTicket = ticketService.getTicketById(Long.parseLong(ticketId));
+        if (newTicket == null) {statusLabel.setText("Kein Ticket gefunden.");}
+        newTicket.setStatus(TicketStatus.refunded);
+        ticketService.changeTicket(newTicket);
         statusLabel.setText("Ticket mit ID " + ticketId + " wurde zurückerstattet.");
     }
 }

@@ -58,6 +58,11 @@ public class TicketService {
      * @param ticket Das Ticket mit den aktualisierten Daten
      */
     public void changeTicket(Ticket ticket) {
-        ticketRepository.updateTicket(ticket);
+        Ticket updatedTicket = getTicketById(ticket.getId());
+        updatedTicket.setPrice(ticket.getPrice());
+        updatedTicket.setDay(ticket.getDay());
+        updatedTicket.setStatus(ticket.getStatus());
+        updatedTicket.setType(ticket.getType());
+        saveTicket(updatedTicket);
     }
 }

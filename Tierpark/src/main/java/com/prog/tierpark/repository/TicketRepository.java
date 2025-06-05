@@ -42,7 +42,7 @@ public class TicketRepository {
                 return new Ticket(
                         rs.getLong("id"),
                         TicketType.valueOf(rs.getString("type")),
-                        rs.getDate("day"),
+                        rs.getDate("theDAte"),
                         rs.getDouble("price"),
                         TicketStatus.valueOf(rs.getString("status"))
                 );
@@ -92,5 +92,6 @@ public class TicketRepository {
      * @param ticket Das Ticket mit aktualisierten Werten
      */
     public void updateTicket(Ticket ticket) {
+        saveTicket(ticket);
     }
 }
