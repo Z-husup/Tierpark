@@ -6,15 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.EnclosureListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.EnclosureListController">
    <children>
       <ListView fx:id="enclosureListView" layoutX="14.0" layoutY="86.0" prefHeight="300.0" prefWidth="251.0" />
-      <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enclosures:">
+      <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gehäuse:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="301.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enclosure:">
+      <Text layoutX="301.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gehäuse:">
          <font>
             <Font size="14.0" />
          </font>
@@ -24,28 +24,28 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="303.0" layoutY="361.0" mnemonicParsing="false" onAction="#toEnclosureManagePage" prefHeight="25.0" prefWidth="273.0" text="Manage Page" />
+      <Button layoutX="303.0" layoutY="361.0" mnemonicParsing="false" onAction="#toEnclosureManagePage" prefHeight="25.0" prefWidth="273.0" text="Seite verwalten" />
       <Text layoutX="302.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="302.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
+      <Text layoutX="302.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Typ:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="302.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+      <Text layoutX="302.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="302.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity:">
+      <Text layoutX="302.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kapazität:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="303.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Condition:">
+      <Text layoutX="303.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bedingung:">
          <font>
             <Font size="14.0" />
          </font>
@@ -75,7 +75,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Main Menu" />
-      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Hauptmenü" />
+      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Zurück" />
    </children>
 </AnchorPane>

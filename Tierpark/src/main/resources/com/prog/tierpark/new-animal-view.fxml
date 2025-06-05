@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.animal.NewAnimalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.animal.NewAnimalController">
    <children>
-      <Text layoutX="272.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal:">
+      <Text layoutX="272.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tier:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="20.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth">
+      <Text layoutX="20.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geburtsdatum">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="20.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group:">
+      <Text layoutX="20.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppe:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date">
+      <Text layoutX="14.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ankunftsdatum">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="16.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:">
+      <Text layoutX="16.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geschlecht:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Main Menu" />
-      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Hauptmenü" />
+      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Zurück" />
       <TextField fx:id="animalNameField" layoutX="127.0" layoutY="62.0" prefHeight="25.0" prefWidth="164.0" />
-      <Button layoutX="12.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleCreateNewAnimal" prefHeight="25.0" prefWidth="577.0" text="Add new Animal" />
-      <Text layoutX="16.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Size(length-cm):">
+      <Button layoutX="12.0" layoutY="416.0" mnemonicParsing="false" onAction="#handleCreateNewAnimal" prefHeight="25.0" prefWidth="577.0" text="Neues Tier hinzufügen" />
+      <Text layoutX="16.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Größe (länge-cm):">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="18.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight(kg)">
+      <Text layoutX="18.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gewicht (kg)">
          <font>
             <Font size="14.0" />
          </font>
@@ -53,7 +57,7 @@
          </font>
       </Text>
       <TextField fx:id="weightField" layoutX="127.0" layoutY="259.0" prefHeight="25.0" prefWidth="120.0" promptText="num" />
-      <Text layoutX="16.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health Status:">
+      <Text layoutX="16.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gesundheitszustand:">
          <font>
             <Font size="14.0" />
          </font>
@@ -64,7 +68,7 @@
       <ComboBox fx:id="genderCombo" layoutX="127.0" layoutY="202.0" prefHeight="25.0" prefWidth="164.0" />
       <ComboBox fx:id="healthStatusCombo" layoutX="127.0" layoutY="291.0" prefHeight="25.0" prefWidth="164.0" />
       <ImageView fx:id="animalGroupImage" fitHeight="161.0" fitWidth="265.0" layoutX="318.0" layoutY="96.0" pickOnBounds="true" />
-      <Text layoutX="16.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move to enclosure:">
+      <Text layoutX="16.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Umzug in das Gehege:">
          <font>
             <Font size="14.0" />
          </font>

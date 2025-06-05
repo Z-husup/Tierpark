@@ -12,16 +12,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="727.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.AnimalFoodController">
    <children>
-      <Button layoutX="35.0" layoutY="652.0" mnemonicParsing="false" onAction="#handeNewFood" prefHeight="25.0" prefWidth="281.0" text="Register new Food" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Main Menu" />
-      <Button layoutX="961.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Back" />
+      <Button layoutX="35.0" layoutY="652.0" mnemonicParsing="false" onAction="#handeNewFood" prefHeight="25.0" prefWidth="205.0" text="Neues Essen registrieren" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Hauptmenü" />
+      <Button layoutX="961.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Zurück" />
       <ListView fx:id="foodStorageListView" layoutX="452.0" layoutY="149.0" prefHeight="529.0" prefWidth="587.0" />
-      <Text layoutX="429.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Management:">
+      <Text layoutX="429.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lebensmittelmanagement:">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="462.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food Storage:">
+      <Text layoutX="462.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lagerung von Lebensmitteln:">
          <font>
             <Font size="24.0" />
          </font>
@@ -35,33 +35,33 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="412.0" text="Quantity:">
+      <Label layoutX="30.0" layoutY="412.0" text="Menge:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="474.0" text="Weight(kg):">
+      <Label layoutX="30.0" layoutY="474.0" text="Gewicht (kg):">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="534.0" text="Expiration Date:">
+      <Label layoutX="30.0" layoutY="534.0" text="Ablaufdatum:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <DatePicker fx:id="expirationDatePicker" layoutX="235.0" layoutY="535.0" prefHeight="25.0" prefWidth="176.0" />
-      <Text layoutX="30.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Food Record:">
+      <Text layoutX="30.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Neuer Lebensmittelrekord:">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
       <TextField fx:id="conditionField" layoutX="235.0" layoutY="599.0" prefHeight="25.0" prefWidth="187.0" />
-      <Label layoutX="37.0" layoutY="598.0" text="Condition:">
+      <Label layoutX="37.0" layoutY="598.0" text="Bedingung:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="325.0" layoutY="652.0" mnemonicParsing="false" onAction="#handeNewFood" prefHeight="25.0" prefWidth="99.0" text="Apply Changes" />
+      <Button layoutX="256.0" layoutY="652.0" mnemonicParsing="false" onAction="#handeNewFood" prefHeight="25.0" prefWidth="168.0" text="Änderungen übernehmen" />
    </children>
 </AnchorPane>

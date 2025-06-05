@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="com.prog.tierpark.controller.worker.WorkerMenuController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.worker.WorkerMenuController">
    <children>
       <ListView fx:id="scheduleViewList" layoutX="311.0" layoutY="75.0" prefHeight="311.0" prefWidth="275.0" />
       <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Worker:">
@@ -19,18 +19,18 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="311.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current schedule for Enclosure:" wrappingWidth="135.65499877929688">
+      <Text layoutX="311.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aktueller Zeitplan für das Gehäuse:" wrappingWidth="135.65499877929688">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fx:id="enclosureLabel1" layoutX="379.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+      <Text fx:id="enclosureLabel1" layoutX="403.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onAction="#toEnclosureListPage" prefHeight="25.0" prefWidth="275.0" text="All Enclosures List" />
-      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#toFoodManagementPage" prefHeight="25.0" prefWidth="275.0" text="Food Management" />
+      <Button layoutX="14.0" layoutY="325.0" mnemonicParsing="false" onAction="#toEnclosureListPage" prefHeight="25.0" prefWidth="275.0" text="Liste aller Gehäuse" />
+      <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#toFoodManagementPage" prefHeight="25.0" prefWidth="275.0" text="Lebensmittelmanagement" />
       <Text layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full-name:">
          <font>
             <Font size="14.0" />
@@ -51,17 +51,17 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="17.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Related Enclosure:">
+      <Text layoutX="17.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zugehöriges Gehäuse:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text fx:id="enclosureLabel2" layoutX="138.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+      <Text fx:id="enclosureLabel2" layoutX="162.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onAction="#toEnclosureManagementPage" prefHeight="25.0" prefWidth="275.0" text="Enclosure Management" />
+      <Button layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onAction="#toEnclosureManagementPage" prefHeight="25.0" prefWidth="275.0" text="Gehäusemanagement" />
       <Text layoutX="16.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
          <font>
             <Font size="14.0" />
@@ -72,7 +72,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="20.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary:">
+      <Text layoutX="12.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gehalt:">
          <font>
             <Font size="14.0" />
          </font>

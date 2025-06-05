@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.EditEnclosureController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.prog.tierpark.controller.enclosure.EditEnclosureController">
    <children>
-      <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enclosure:">
+      <Text layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gehäuse:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="animalButton" layoutX="12.0" layoutY="360.0" mnemonicParsing="false" onAction="#toAnimalManagePage" prefHeight="25.0" prefWidth="164.0" text="Animal: ---" />
+      <Button fx:id="animalButton" layoutX="12.0" layoutY="360.0" mnemonicParsing="false" onAction="#toAnimalManagePage" prefHeight="25.0" prefWidth="164.0" text="Tier" />
       <Text layoutX="14.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type:">
+      <Text layoutX="14.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Typ:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+      <Text layoutX="14.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="14.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity:">
+      <Text layoutX="14.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kapazität:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="15.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Condition:">
+      <Text layoutX="15.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bedingung:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#toMainMenu" prefHeight="25.0" prefWidth="89.0" text="Main Menu" />
-      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Back" />
+      <Button layoutX="496.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" prefHeight="25.0" prefWidth="89.0" text="Zurück" />
       <ListView fx:id="scheduleViewList" layoutX="321.0" layoutY="85.0" prefHeight="258.0" prefWidth="275.0" />
-      <Text layoutX="321.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current schedule for Enclosure:" wrappingWidth="135.65499877929688">
+      <Text layoutX="321.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aktueller Zeitplan für das Gehäuse:" wrappingWidth="135.65499877929688">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
       <ListView fx:id="animalsViewList" layoutX="13.0" layoutY="251.0" prefHeight="101.0" prefWidth="275.0" />
-      <Button layoutX="321.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleAddNewSchedule" prefHeight="25.0" prefWidth="164.0" text="Add" />
-      <Button layoutX="496.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleScheduleDelete" prefHeight="25.0" prefWidth="101.0" text="Delete" />
-      <Button layoutX="188.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNewAnimal" prefHeight="25.0" prefWidth="101.0" text="Add" />
+      <Button layoutX="321.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleAddNewSchedule" prefHeight="25.0" prefWidth="164.0" text="Hinzufügen" />
+      <Button layoutX="496.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleScheduleDelete" prefHeight="25.0" prefWidth="101.0" text="Löschen" />
+      <Button layoutX="188.0" layoutY="360.0" mnemonicParsing="false" onAction="#handleNewAnimal" prefHeight="25.0" prefWidth="101.0" text="Hinzufügen" />
       <TextField fx:id="enclosureNameField" layoutX="121.0" layoutY="48.0" prefHeight="25.0" prefWidth="164.0" />
       <TextField fx:id="enclosureTypeField" layoutX="121.0" layoutY="95.0" prefHeight="25.0" prefWidth="164.0" />
       <TextField fx:id="enclosureStatusField" layoutX="121.0" layoutY="123.0" prefHeight="25.0" prefWidth="164.0" />
       <TextField fx:id="enclosureCapacityField" layoutX="121.0" layoutY="160.0" prefHeight="25.0" prefWidth="164.0" />
       <TextField fx:id="enclosureDescriptionField" layoutX="121.0" layoutY="189.0" prefHeight="25.0" prefWidth="164.0" />
       <TextField fx:id="enclosureConditionField" layoutX="121.0" layoutY="217.0" prefHeight="25.0" prefWidth="164.0" />
-      <Button layoutX="9.0" layoutY="421.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="25.0" prefWidth="584.0" text="Save" />
+      <Button layoutX="9.0" layoutY="421.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="25.0" prefWidth="584.0" text="Speichern" />
    </children>
 </AnchorPane>
